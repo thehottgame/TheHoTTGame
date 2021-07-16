@@ -57,3 +57,12 @@
   - Homotopy n-types
     a) homotopy levels being closed under type constructions, in particular Set and ETT inside HoTT
        * in particular sigma types
+
+* Debriefs
+- 2021 July 15; Homotopy n-types
+  + watched (Harper) lecture 15 on Sets being closed under type formations ->- motivates showing in Agda Sets closed under Sigma.
+  + Harper does product case, claiming sigma case follows analogously,
+  + attempt proof in Cubical Agda but highly non-obvious how to use that fibers are Sets.
+  + difficulty is that PathP not in one fiber, but PathOver is, AND PathOver <-> PathP NON-obvious
+  + Easy to generalize situation to n-types being closed under Sigma (7.1.8 in HoTT book), we showed this assuming PathPIsoPath
+-
