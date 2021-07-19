@@ -1,4 +1,4 @@
-module TheHoTTGame.Trinitarianism.AsCats where
+module Trinitarianism.AsCats where
 
 {-
   Here are some things that we could like to have in a category

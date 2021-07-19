@@ -1,5 +1,5 @@
-module TheHoTTGame.Trinitarianism.AsProps.Quest0 where
-open import TheHoTTGame.Trinitarianism.AsProps.Quest0Preamble
+module Trinitarianism.AsProps.Quest0 where
+open import Trinitarianism.AsProps.Quest0Preamble
 
 {-
   Here are some things that we could like to have in a logical framework

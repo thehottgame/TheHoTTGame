@@ -1,5 +1,5 @@
-module TheHoTTGame.Trinitarianism.AsProps.Quest0Solutions where
-open import TheHoTTGame.Trinitarianism.AsProps.Quest0Preamble
+module Trinitarianism.AsProps.Quest0Solutions where
+open import Trinitarianism.AsProps.Quest0Preamble
 
 data ⊤ : Prop where
   trivial : ⊤
