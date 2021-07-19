@@ -1,0 +1,67 @@
+# Planning The HoTT Game
+
+## Aims of the HoTT Game
+- To get mathematicians with no experience in proof verification interested in HoTT and able to use Agda for HoTT
+- [?] Work towards showing an interesting result in HoTT
+- Try to balance hiding cubical implementations whilst exploiting their advantages
+
+## Barriers
+- HOLD Installation of emacs
+- TODO Usage of emacs
+- TODO General type theoretic foundations
+- TODO Cubical type theory
+
+## Format
+- [?] Everything done in .agda files
+- Partially written code with spaces for participants to fill in + answer files
+- Levels set out with mini-bosses like in Nat Num Game, but with an overall boss
+- [?] Side quests
+- References to Harper lectures and HoTT book
+
+# Content
+ <!-- listing topics we have pursued, NO ordering -->
+- emacs usage
+  - `data` and `record`
+  - basic commands (all covered in https://agda.readthedocs.io/en/v2.6.0.1/getting-started/quick-guide.html)
+  - recommend doom emacs? -> basic doom usage and command differences with nude agda.
+  - implicit/explicit arguments
+  - holes and inferred types
+  - `_+_` and `plus__`
+- type theory basics
+  - meta (judgemental/definitional) equality vs internal (propositional) equality
+  - constructing types in universes
+  - universes
+  - recursors / pattern matching
+  - side quest: some natural number exercises as early evidence of being able to 'do maths'?
+  - different notions of equivalence
+    a) fibers contractable
+    b) quasi-inverse
+    c) zig-zag
+  - types are infinity groupoids
+  - positive and negative constructions of Pi/Sigma types
+- HoTT
+  - basics
+    a) meta interval, identity type vs path type
+    b) path type on other types
+    c) dependent path type PathP vs path over
+    d) univalence
+    e) the (non)-issue of J in (Cu)TT
+    f) isContr, isProp, isSet
+  - Structures, univalence and transport
+    a) transporting results between isomorphic structures
+  - HITs, examples
+    a) the constructed interval
+    b) booleans and covers
+    c) S^n
+    d)
+  - Homotopy n-types
+    a) homotopy levels being closed under type constructions, in particular Set and ETT inside HoTT
+       * in particular sigma types
+
+## Debriefs
+- 2021 July 15; Homotopy n-types
+  - watched (Harper) lecture 15 on Sets being closed under type formations ->- motivates showing in Agda Sets closed under Sigma.
+  - Harper does product case, claiming sigma case follows analogously,
+  - attempt proof in Cubical Agda but highly non-obvious how to use that fibers are Sets.
+  - difficulty is that PathP not in one fiber, but PathOver is, AND PathOver <-> PathP NON-obvious
+  - Easy to generalize situation to n-types being closed under Sigma (7.1.8 in HoTT book), we showed this assuming PathPIsoPath
