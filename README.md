@@ -44,7 +44,7 @@ Some text should be highlighted, and any `?` should turn into `{ }`.
 
 ## How the game works
 
-Our Game is currently under development. Please contact the devs.
+Our Game is under development. Please contact the devs.
 Currently you can try `Trinitarianism/AsProps/Quest0.agda`,
 making use of the accompanying solutions Agda file.
 
