@@ -63,8 +63,8 @@
   + HITs, examples
     - the constructed interval
     - booleans and covers
-    - S^n
-    - S^1 with 2 cw structures equiv
+    - =S^n=
+    - =S^1= with 2 cw structures equiv
   + Homotopy n-types
     - homotopy levels being closed under type constructions, in particular Set and ETT inside HoTT
       + in particular sigma types
