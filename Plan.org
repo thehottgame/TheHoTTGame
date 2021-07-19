@@ -1,32 +1,36 @@
-# Planning The HoTT Game
+#+OPTIONS: num:nil
+#+AUTHOR: JLH
+#+AUTHOR: KL
 
-## Aims of the HoTT Game
-- To get mathematicians with no experience in proof verification interested in HoTT and able to use Agda for HoTT
-- [?] Work towards showing an interesting result in HoTT
-- Try to balance hiding cubical implementations whilst exploiting their advantages
+* Planning The HoTT Game
 
-## Barriers
-- HOLD Installation of emacs
-- TODO Usage of emacs
-- TODO General type theoretic foundations
-- TODO Cubical type theory
+** Aims of the HoTT Game
+  - To get mathematicians with no experience in proof verification interested in HoTT and able to use Agda for HoTT
+  - [?] Work towards showing an interesting result in HoTT
+  - Try to balance hiding cubical implementations whilst exploiting their advantages
 
-## Format
-- [?] Everything done in .agda files
-- Partially written code with spaces for participants to fill in + answer files
-- Levels set out with mini-bosses like in Nat Num Game, but with an overall boss
-- [?] Side quests
-- References to Harper lectures and HoTT book
+** Barriers
+  - HOLD Installation of emacs
+  - TODO Usage of emacs
+  - TODO General type theoretic foundations
+  - TODO Cubical type theory
 
-# Content
-<!-- listing topics we have pursued, NO ordering -->
+** Format
+  - [?] Everything done in .agda files
+  - Partially written code with spaces for participants to fill in + answer files
+  - Levels set out with mini-bosses like in Nat Num Game, but with an overall boss
+  - [?] Side quests
+  - References to Harper lectures and HoTT book
+
+** Content
+# listing topics we have pursued, NO ordering
 - emacs usage
 - agda usage
   - basic commands (all covered in https://agda.readthedocs.io/en/v2.6.0.1/getting-started/quick-guide.html)
-  - recommend doom emacs? -> basic doom usage and command differences with nude agda.
+  - recommend doom emacs
   - implicit/explicit arguments
   - holes and inferred types
-  - `_+_` and `plus__`
+  - src_elisp{(_+_)} and src_elisp{(plus__)}
 - type theory basics
   - meta (judgemental/definitional) equality vs internal (propositional) equality
     - function extensionality
@@ -64,7 +68,7 @@
     a) homotopy levels being closed under type constructions, in particular Set and ETT inside HoTT
        * in particular sigma types
 
-# Debriefs
+** Debriefs
 - 2021 July 15; Homotopy n-types
   - watched (Harper) lecture 15 on Sets being closed under type formations ->- motivates showing in Agda Sets closed under Sigma.
   - Harper does product case, claiming sigma case follows analogously,
