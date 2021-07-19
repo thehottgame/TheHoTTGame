@@ -23,11 +23,11 @@ https://github.com/agda/cubical) (version 0.3)
 and make sure Agda knows where your cubical library is 
 by following instructions on the [library management page](
 https://agda.readthedocs.io/en/latest/tools/package-system.html?highlight=library%20management).
-(In short: locate (or create) your `libraries` file and add a line 
+In short: locate (or create) your `libraries` file and add a line 
 ```
 the-directory/cubical.agda-lib
 ```
-to it, where `the-directory` is the location of `cubical.agda-lib` on your computer.)
+to it, where `the-directory` is the location of `cubical.agda-lib` on your computer.
 
 Get the HoTT Game by [cloning this repository](
 https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)
