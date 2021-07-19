@@ -31,6 +31,9 @@
   - meta (judgemental/definitional) equality vs internal (propositional) equality
     - function extensionality
   - type formation
+    - inductive types
+      - (side Q) positive and negative constructions of Pi/Sigma types
+      - `data` and `record`
   - universes
   - recursors / pattern matching
   - (side Q) some natural number exercises as early evidence of being able to 'do maths'?
@@ -39,26 +42,24 @@
     b) quasi-inverse
     c) zig-zag
   - (side Q) types are infinity groupoids
-  - inductive types
-    - (side Q) positive and negative constructions of Pi/Sigma types
-    - `data` and `record`
+  - extra paths (univalence, fun ext, HITs)
 - HoTT
   - basics
     a) meta interval, identity type vs path type
-      - mention identity type for compatability with other sources, but just use path type
+       - mention identity type for compatability with other sources, but just use path type
     b) path type on other types
     c) dependent path type PathP vs path over
     d) univalence
     e) the (non)-issue of J in (Cu)TT
     f) isContr, isProp, isSet
     g) drawing pictures
-  - Structures, univalence and transport
+  - Structures, using univalence to transport
     a) transporting results between isomorphic structures
   - HITs, examples
     a) the constructed interval
     b) booleans and covers
     c) S^n
-    d)
+    d) S^1 with 2 cw structures equiv
   - Homotopy n-types
     a) homotopy levels being closed under type constructions, in particular Set and ETT inside HoTT
        * in particular sigma types
