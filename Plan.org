@@ -24,20 +24,21 @@
 
 ** Content
 # listing topics we have pursued, NO ordering
+
 - emacs usage
 - agda usage
   - basic commands (all covered in https://agda.readthedocs.io/en/v2.6.0.1/getting-started/quick-guide.html)
   - recommend doom emacs
   - implicit/explicit arguments
   - holes and inferred types
-  - src_elisp{(_+_)} and src_elisp{(plus__)}
+  -  =_+_= vs ~plus__~
 - type theory basics
   - meta (judgemental/definitional) equality vs internal (propositional) equality
     - function extensionality
   - type formation
     - inductive types
       - (side Q) positive and negative constructions of Pi/Sigma types
-      - `data` and `record`
+      - ~data~ and ~record~
   - universes
   - recursors / pattern matching
   - (side Q) some natural number exercises as early evidence of being able to 'do maths'?

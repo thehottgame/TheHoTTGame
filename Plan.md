@@ -1,62 +1,42 @@
 
 # Table of Contents
 
-1.  [Aims of the HoTT Game](#org45da28b)
-    1.  [To get mathematicians with no experience in proof verification interested in HoTT and able to use Agda for HoTT](#org6c86aa4)
-    2.  [Work towards showing an interesting result in HoTT](#org5c370bf)
-    3.  [Try to balance hiding cubical implementations whilst exploiting their advantages](#org2cc236e)
-2.  [Barriers](#org483c28e)
-    1.  [Installation of emacs](#orgfaee064)
-    2.  [Usage of emacs](#org4ec8663)
-    3.  [General type theoretic foundations](#orgd6212c3)
-    4.  [Cubical type theory](#orgdb053bf)
+-   [Planning The HoTT Game](#org3bb90ed)
+    -   [Aims of the HoTT Game](#orga8d795d)
+    -   [Barriers](#org122a1d0)
+    -   [Format](#org3ea389f)
+    -   [Content](#org70d2231)
+    -   [Debriefs](#org37fbeb9)
 
 
-<a id="org45da28b"></a>
 
-# Aims of the HoTT Game
+<a id="org3bb90ed"></a>
 
-
-<a id="org6c86aa4"></a>
-
-## To get mathematicians with no experience in proof verification interested in HoTT and able to use Agda for HoTT
+# Planning The HoTT Game
 
 
-<a id="org5c370bf"></a>
+<a id="orga8d795d"></a>
 
-## [?] Work towards showing an interesting result in HoTT
+## Aims of the HoTT Game
 
-
-<a id="org2cc236e"></a>
-
-## Try to balance hiding cubical implementations whilst exploiting their advantages
-
-
-<a id="org483c28e"></a>
-
-# Barriers
+-   To get mathematicians with no experience in proof verification interested in HoTT and able to use Agda for HoTT
+-   [?] Work towards showing an interesting result in HoTT
+-   Try to balance hiding cubical implementations whilst exploiting their advantages
 
 
-<a id="orgfaee064"></a>
+<a id="org122a1d0"></a>
 
-## HOLD Installation of emacs
+## Barriers
 
-
-<a id="org4ec8663"></a>
-
-## TODO Usage of emacs
-
-
-<a id="orgd6212c3"></a>
-
-## TODO General type theoretic foundations
+-   HOLD Installation of emacs
+-   TODO Usage of emacs
+-   TODO General type theoretic foundations
+-   TODO Cubical type theory
 
 
-<a id="orgdb053bf"></a>
+<a id="org3ea389f"></a>
 
-## TODO Cubical type theory
-
-\## Format
+## Format
 
 -   [?] Everything done in .agda files
 -   Partially written code with spaces for participants to fill in + answer files
@@ -64,7 +44,10 @@
 -   [?] Side quests
 -   References to Harper lectures and HoTT book
 
-<!&#x2013; listing topics we have pursued, NO ordering &#x2013;>
+
+<a id="org70d2231"></a>
+
+## Content
 
 -   emacs usage
 -   agda usage
@@ -72,14 +55,14 @@
     -   recommend doom emacs
     -   implicit/explicit arguments
     -   holes and inferred types
-    -   \`\_+\_\` and \`plus\_\_\`
+    -   `_+_` vs `plus__`
 -   type theory basics
     -   meta (judgemental/definitional) equality vs internal (propositional) equality
         -   function extensionality
     -   type formation
         -   inductive types
             -   (side Q) positive and negative constructions of Pi/Sigma types
-            -   \`data\` and \`record\`
+            -   `data` and `record`
     -   universes
     -   recursors / pattern matching
     -   (side Q) some natural number exercises as early evidence of being able to &rsquo;do maths&rsquo;?
@@ -109,6 +92,11 @@
     -   Homotopy n-types
         1.  homotopy levels being closed under type constructions, in particular Set and ETT inside HoTT
             -   in particular sigma types
+
+
+<a id="org37fbeb9"></a>
+
+## Debriefs
 
 -   2021 July 15; Homotopy n-types
     -   watched (Harper) lecture 15 on Sets being closed under type formations ->- motivates showing in Agda Sets closed under Sigma.
