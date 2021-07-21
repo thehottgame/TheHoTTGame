@@ -28,7 +28,7 @@ In category theory, types are objects and terms are generalised elements.
 - and / pairs / product
 - implication / functions / internal hom
 
-# Dependent Types
+## Dependent Types
 
 - predicate / type family / over category
 - substitution / substitution / pullback

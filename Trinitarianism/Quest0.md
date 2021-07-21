@@ -127,8 +127,7 @@ We can see `ℕ` as a categorical notion:
 with `zero : ⊤ → ℕ` and `suc : ℕ → ℕ` such that
 given any `⊤ → A → A` there exist a unique morphism `ℕ → A`
 such that the diagram commutes:
-<img src="images/nno.png" alt="nno" width="200"/>
-
+<img src="images/nno.png" alt="nno" width="400"/>
 
 This has no interpretation as a proposition since
 there are too many terms,
@@ -137,8 +136,7 @@ between proofs of the same thing.
 (ZFC doesn't even mention logic internally,
 unlike Type Theory!)
 
+To see how to use terms of type `ℕ`, i.e. induct on `ℕ`, 
+go to Quest1!
 
-
-
--}
 

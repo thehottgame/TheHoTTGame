@@ -4,7 +4,7 @@ open import Trinitarianism.Quest0Preamble
 private
   postulate
     u : Level
-    A : Type u
+
 
 {-
 There are three ways of looking at `A : Type u`.
@@ -147,8 +147,12 @@ unlike Type Theory!)
 
 -}
 
+postulate
+  A : Type u
 
-
+NNO : A → (A → A) → (ℕ → A)
+NNO a s zero = a
+NNO a s (suc n) = s (NNO a s n)
 
 
 
