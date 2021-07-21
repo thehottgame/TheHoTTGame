@@ -127,7 +127,7 @@ We can see `ℕ` as a categorical notion:
 with `zero : ⊤ → ℕ` and `suc : ℕ → ℕ` such that
 given any `⊤ → A → A` there exist a unique morphism `ℕ → A`
 such that the diagram commutes:
-![nno](images/nno.png)
+<img src="images/nno.png" alt="nno" width="200"/>
 
 
 This has no interpretation as a proposition since
