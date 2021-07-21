@@ -3,7 +3,7 @@ There are three ways of looking at `A : Type u`.
   - type theoretically, '`A` is a construction'
   - categorically, '`A` is an object in category `Type u`'
 
-We will explain what u : Level and Type u is at the end.
+We will explain what u : Level and Type u is at the end of Quest1.
 
 A first example of a type construction is the function type.
 Given types `A` and `B`, we have another type `A → B` which can be seen as
