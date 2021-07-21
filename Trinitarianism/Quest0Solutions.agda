@@ -1,4 +1,4 @@
-module Trinitarianism.Quest0 where
+module Trinitarianism.Quest0Solutions where
 open import Trinitarianism.Quest0Preamble
 
 private
@@ -9,10 +9,16 @@ data ⊤ : Type u where
   trivial : ⊤
 
 TrueToTrue : ⊤ → ⊤
-TrueToTrue = {!!}
+TrueToTrue = λ x → x
 
 TrueToTrue' : ⊤ → ⊤
-TrueToTrue' x = {!!}
+TrueToTrue' x = x
+
+TrueToTrue'' : ⊤ → ⊤
+TrueToTrue'' trivial = trivial
+
+TrueToTrue''' : ⊤ → ⊤
+TrueToTrue''' x = trivial
 
 data ⊥ : Type u where
 

@@ -1,10 +1,14 @@
-module Trinitarianism.AsProps.Quest0Solutions where
-open import Trinitarianism.AsProps.Quest0Preamble
+module Trinitarianism.Quest0Solutions where
+open import Trinitarianism.Quest0Preamble
 
-data ⊤ : Prop where
+private
+  postulate
+    u : Level
+
+data ⊤ : Type u where
   trivial : ⊤
 
-data ⊥ : Prop where
+data ⊥ : Type u where
 
 TrueToTrue : ⊤ → ⊤
 TrueToTrue = λ x → x
@@ -18,7 +22,7 @@ TrueToTrue'' trivial = trivial
 TrueToTrue''' : ⊤ → ⊤
 TrueToTrue''' x = trivial
 
-isZero : ℕ → Prop
+isZero : ℕ → Type u
 isZero zero = ⊤
 isZero (suc n) = ⊥
 
@@ -28,7 +32,7 @@ ExistsZero = zero , trivial
 AllZero→⊥ : ((x : ℕ) → isZero x) → ⊥
 AllZero→⊥ h = h 1
 
-data _∨_ (P Q : Prop) : Prop where
+data _∨_ (P Q : Type u) : Type u where
   left : P → P ∨ Q
   right : Q → P ∨ Q
 
