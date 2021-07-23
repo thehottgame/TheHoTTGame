@@ -2,7 +2,7 @@
 Trinitarianism
 ==============
 By the end of this arc we will have 'a place to do maths'. 
-The following features will have three interpretations:
+The 'types' that make up this 'place' will have three interpretations:
  - Proof theoretic, with types as propositions
  - Type theoretic, with types as programs
  - Category theoretic, with types as objects in a category

@@ -1,24 +1,22 @@
-There are three ways of looking at `A : Type u`.
+# Terms and Types
+
+There are three ways of looking at `A : Type`.
   - proof theoretically, '`A` is a proposition'
   - type theoretically, '`A` is a construction'
-  - categorically, '`A` is an object in category `Type u`'
-
-We will explain what u : Level and Type u is at the end of Quest1.
+  - categorically, '`A` is an object in category `Type`'
 
 A first example of a type construction is the function type.
 Given types `A` and `B`, we have another type `A → B` which can be seen as
   - the proposition '`A` implies `B`'
   - the construction 'ways to convert `A` recipes to `B` recipes'
-  - internal hom of the category `Type u`
+  - internal hom of the category `Type`
 
 To give examples of this, let's make some types first!
 
 ```agda 
-
 -- Here is how we define 'true'
 data ⊤ : Type u where
   trivial : ⊤
-
 ```
 
 It reads '`⊤` is an inductive type with a constructor `trivial`',
@@ -27,6 +25,8 @@ with three interpretations
   - `⊤` is a construction with a recipe called `trivial`
   - `⊤` is a terminal object: every object has a morphism into `⊤` given by `· ↦ trivial`
 
+What goes on the right of the `:` is called a type, and will always be in (some) `Type`,
+and what goes on the left is called a term of that term.
 The above tells you how we _make_ a term of type `⊤`,
 let's see an example of _using_ a term of type `⊤`:
 
@@ -44,7 +44,7 @@ TrueToTrue = {!!}
   - `C-c C-,` to check the goal (`C-c C-comma`)
   - the Goal area should look like
 
-  ```
+  ```agda
   Goal: ⊤
   —————————————————————————
   x : ⊤
@@ -58,10 +58,8 @@ There is more than one proof (see solutions) - are they the same?
 Here is an important one:
 
 ```agda
-
-TrueToTrue' : ⊤ → ⊤
-TrueToTrue' x = {!!}
-
+TrueToTrue : ⊤ → ⊤
+TrueToTrue x = {!!}
 ```
 
 
@@ -123,15 +121,15 @@ As a construction, this reads '
   '
 
 We can see `ℕ` as a categorical notion:
-ℕ is a natural numbers object in the category `Type u`,
+ℕ is a natural numbers object in the category `Type`,
 with `zero : ⊤ → ℕ` and `suc : ℕ → ℕ` such that
 given any `⊤ → A → A` there exist a unique morphism `ℕ → A`
 such that the diagram commutes:
 <img src="images/nno.png" alt="nno" width="400"/>
 
 This has no interpretation as a proposition since
-there are too many terms,
-since mathematicians classically didn't distinguish
+there are 'too many terms/proofs' -
+mathematicians classically didn't distinguish
 between proofs of the same thing.
 (ZFC doesn't even mention logic internally,
 unlike Type Theory!)
@@ -139,4 +137,19 @@ unlike Type Theory!)
 To see how to use terms of type `ℕ`, i.e. induct on `ℕ`, 
 go to Quest1!
 
+## Universes
 
+You may have noticed the notational similarities between 
+`zero : ℕ` and `ℕ : Type`.
+Which may lead to the question `Type : ?`.
+We simply assert `Type : Type 1`,
+but then we are chasing our tail, asking `Type 1 : ?`.
+Type theorists make sure that every type (the thing on the right side of the `:`)
+itself is a term, and every term has a type.
+So what we really need is 
+```
+Type : Type 1, Type 1 : Type 2, Type 2 : Type 3, ⋯ 
+```
+These are called _universes_.
+We will see definitions, for example _groups_
+that will require multiple universes.
