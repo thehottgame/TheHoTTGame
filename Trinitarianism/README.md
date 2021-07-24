@@ -2,13 +2,17 @@
 Trinitarianism
 ==============
 By the end of this arc we will have 'a place to do maths'. 
-The 'types' that make up this 'place' will have three interpretations:
- - Proof theoretic, with types as propositions
- - Type theoretic, with types as programs
- - Category theoretic, with types as objects in a category
+The 'types' that will populated this 'place' 
+will have three interpretations:
+ - Proof theoretically, with types as propositions
+ - Type theoretically, with types as programs
+ - Category theoretically, with types as objects in a category
 
-<!-- insert picture of trinitarianism -->
-
+<img src="images/trinitarianism.png" 
+     alt="the holy trinity" 
+     width="500"
+     class="center"/>
+ 
 ## Terms and Types
 
 Here are some things that we could like to have in a 'place to do maths'

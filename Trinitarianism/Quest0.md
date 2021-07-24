@@ -6,7 +6,8 @@ There are three ways of looking at `A : Type`.
   - categorically, '`A` is an object in category `Type`'
 
 A first example of a type construction is the function type.
-Given types `A` and `B`, we have another type `A → B` which can be seen as
+Given types `A : Type` and `B : Type`, 
+we have another type `A → B : Type` which can be seen as
   - the proposition '`A` implies `B`'
   - the construction 'ways to convert `A` recipes to `B` recipes'
   - internal hom of the category `Type`
@@ -25,10 +26,14 @@ with three interpretations
   - `⊤` is a construction with a recipe called `trivial`
   - `⊤` is a terminal object: every object has a morphism into `⊤` given by `· ↦ trivial`
 
-What goes on the right of the `:` is called a type, and will always be in (some) `Type`,
-and what goes on the left is called a term of that term.
-The above tells you how we _make_ a term of type `⊤`,
-let's see an example of _using_ a term of type `⊤`:
+In general, the expression `a : A` is read '`a` is a term of type `A`',
+and has three interpretations,
+  - `a` is a proof of the proposition `A`
+  - `a` is a recipe for the construction `A`
+  - `a` is a generalised element of the object `A` in the category `Type`.
+
+The above tells you how we _make_ a term of type `⊤`.
+Let's see an example of _using_ a term of type `⊤`:
 
 ```agda
 TrueToTrue : ⊤ → ⊤
@@ -58,10 +63,9 @@ There is more than one proof (see solutions) - are they the same?
 Here is an important one:
 
 ```agda
-TrueToTrue : ⊤ → ⊤
-TrueToTrue x = {!!}
+TrueToTrue' : ⊤ → ⊤
+TrueToTrue' x = {!!}
 ```
-
 
   - Naviagate to the hole and check the goal.
   - Note `x` is already taken out for you.
@@ -70,18 +74,18 @@ TrueToTrue x = {!!}
 
 Built into the definition of `⊤` is agda's way of making a map out of ⊤
 into another type A, which we have just used.
-It says to map out of ⊤ it suffices to do the case when `x` is `trivial`, or
+It says 'to map out of ⊤ it suffices to do the case when `x` is `trivial`', or
   - the only proof of `⊤` is `trivial`
   - the only recipe for `⊤` is `trivial`
   - the only one generalized element `trivial` in `⊤`
 
+Let's define another type.
+
 ```agda
 
--- Here is how we define 'false'
 data ⊥ : Type u where
 
 ```
-
 
 It reads '`⊥` is an inductive type with no constructors',
 with three interepretations
@@ -102,8 +106,7 @@ Agda knows that there are no cases so there is nothing to do!
 This has three interpretations:
   - false implies anything (principle of explosion)
   - ?
-  - `⊥` is initial in the category `Type u`
-
+  - `⊥` is initial in the category `Type`
 
 We can also encode "natural numbers" as a type.
 
@@ -120,36 +123,57 @@ As a construction, this reads '
       another recipe for `ℕ`.
   '
 
-We can see `ℕ` as a categorical notion:
-ℕ is a natural numbers object in the category `Type`,
-with `zero : ⊤ → ℕ` and `suc : ℕ → ℕ` such that
+We can see `ℕ` as categorically :
+ℕ is a natural numbers object in the category `Type`.
+This means it is equipped with morphisms `zero : ⊤ → ℕ` 
+and `suc : ℕ → ℕ` such that
 given any `⊤ → A → A` there exist a unique morphism `ℕ → A`
 such that the diagram commutes:
-<img src="images/nno.png" alt="nno" width="400"/>
+<img src="images/nno.png" 
+     alt="nno" 
+     width="500"
+     class="center"/>
 
 This has no interpretation as a proposition since
-there are 'too many terms/proofs' -
-mathematicians classically didn't distinguish
-between proofs of the same thing.
+there are 'too many proofs' -
+mathematicians classically don't distinguish
+between proofs of a single proposition.
 (ZFC doesn't even mention logic internally,
 unlike Type Theory!)
 
-To see how to use terms of type `ℕ`, i.e. induct on `ℕ`, 
+To see how to use terms of type `ℕ`, i.e. induction on `ℕ`, 
 go to Quest1!
 
 ## Universes
 
 You may have noticed the notational similarities between 
 `zero : ℕ` and `ℕ : Type`.
-Which may lead to the question `Type : ?`.
-We simply assert `Type : Type 1`,
-but then we are chasing our tail, asking `Type 1 : ?`.
+This may have lead you to the question, `Type : ?`.
+In type theory, we simply assert `Type : Type 1`.
+But then we are chasing our tail, asking `Type 1 : ?`.
 Type theorists make sure that every type (the thing on the right side of the `:`)
 itself is a term, and every term has a type.
 So what we really need is 
 ```
-Type : Type 1, Type 1 : Type 2, Type 2 : Type 3, ⋯ 
+Type : Type₁, Type₁ : Type₂, Type₂ : Type₃, ⋯
 ```
 These are called _universes_.
-We will see definitions, for example _groups_
-that will require multiple universes.
+The numberings of universes are called _levels_.
+
+<!--
+Everything we will make will be closed in 
+the universe we are in.
+For example,
+
+- Do `C-c C-d`. 
+  Agda will ask you to input an expression.
+- Input `⊤ → ℕ` and hit return.
+
+In the 'agda information' window, you should see `Type`.
+This means Agda has _deduced_ `⊤ → ℕ : Type`.
+In general, you can use `C-c C-d` to check
+the type of terms. 
+
+The reason that `⊤ → ℕ` is a type in `Type`
+is because both `⊤, ℕ` are.
+-->
