@@ -3,7 +3,7 @@ open import Trinitarianism.Quest0Preamble
 
 
 data ⊤ : Type where
-  trivial : ⊤
+  tt : ⊤
 
 TrueToTrue : ⊤ → ⊤
 TrueToTrue = λ x → x
@@ -12,10 +12,10 @@ TrueToTrue' : ⊤ → ⊤
 TrueToTrue' x = x
 
 TrueToTrue'' : ⊤ → ⊤
-TrueToTrue'' trivial = trivial
+TrueToTrue'' tt = tt
 
 TrueToTrue''' : ⊤ → ⊤
-TrueToTrue''' x = trivial
+TrueToTrue''' x = tt
 
 data ⊥ : Type where
 

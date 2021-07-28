@@ -2,7 +2,7 @@ module Trinitarianism.Quest0 where
 open import Trinitarianism.Quest0Preamble
 
 data ⊤ : Type where
-  trivial : ⊤
+  tt : ⊤
 
 TrueToTrue : ⊤ → ⊤
 TrueToTrue = {!!}

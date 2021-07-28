@@ -17,14 +17,14 @@ To give examples of this, let's make some types first!
 ```agda 
 -- Here is how we define 'true'
 data ⊤ : Type u where
-  trivial : ⊤
+  tt : ⊤
 ```
 
-It reads '`⊤` is an inductive type with a constructor `trivial`',
+It reads '`⊤` is an inductive type with a constructor `tt`',
 with three interpretations
-  - `⊤` is a proposition and there is a proof of it, called `trivial`.
-  - `⊤` is a construction with a recipe called `trivial`
-  - `⊤` is a terminal object: every object has a morphism into `⊤` given by `· ↦ trivial`
+  - `⊤` is a proposition and there is a proof of it, called `tt`.
+  - `⊤` is a construction with a recipe called `tt`
+  - `⊤` is a terminal object: every object has a morphism into `⊤` given by `· ↦ tt`
 
 In general, the expression `a : A` is read '`a` is a term of type `A`',
 and has three interpretations,
@@ -70,14 +70,14 @@ TrueToTrue' x = {!!}
   - Naviagate to the hole and check the goal.
   - Note `x` is already taken out for you.
   - You can try type `x` in the hole and `C-c C-c`
-  - `c` stands for 'cases on `x`' and the only case is `trivial`.
+  - `c` stands for 'cases on `x`' and the only case is `tt`.
 
 Built into the definition of `⊤` is agda's way of making a map out of ⊤
 into another type A, which we have just used.
-It says 'to map out of ⊤ it suffices to do the case when `x` is `trivial`', or
-  - the only proof of `⊤` is `trivial`
-  - the only recipe for `⊤` is `trivial`
-  - the only one generalized element `trivial` in `⊤`
+It says 'to map out of ⊤ it suffices to do the case when `x` is `tt`', or
+  - the only proof of `⊤` is `tt`
+  - the only recipe for `⊤` is `tt`
+  - the only one generalized element `tt` in `⊤`
 
 Let's define another type.
 
@@ -123,7 +123,7 @@ As a construction, this reads '
       another recipe for `ℕ`.
   '
 
-We can see `ℕ` as categorically :
+We can see `ℕ` categorically :
 ℕ is a natural numbers object in the category `Type`.
 This means it is equipped with morphisms `zero : ⊤ → ℕ` 
 and `suc : ℕ → ℕ` such that

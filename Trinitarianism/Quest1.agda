@@ -1,8 +1,10 @@
 module Trinitarianism.Quest1 where
 
 open import Cubical.Core.Everything
-open import Trinitarianism.Quest0Solutions
+open import Cubical.Data.Nat hiding (isEven)
 
 isEven : ℕ → Type
-isEven zero = {!!}
+isEven n = {!!}
 
+div2 : Σ ℕ isEven → ℕ
+div2 x = {!!}
