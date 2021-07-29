@@ -1,3 +1,3 @@
-module Trinitarianism.Quest0Preamble where
+module Trinitarianism.Preambles.P0 where
 
 open import Cubical.Core.Everything hiding (_∨_) public

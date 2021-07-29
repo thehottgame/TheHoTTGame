@@ -1,4 +1,4 @@
-# Dependent Types
+# Dependent Types and Sigma Types
 
 In a 'place to do maths'
 we would like to be able to express and 'prove'
@@ -84,6 +84,7 @@ There are three interpretations of `isEven : ℕ → Type`.
   i.e. an object in the over-category `Type↓ℕ`.
   Pictorially, it looks like
 
+
   <img src="images/isEven.png" 
      alt="isEven" 
      width="500"/>
@@ -92,6 +93,9 @@ There are three interpretations of `isEven : ℕ → Type`.
   `isEven n` is called the _fiber over `n`_.
   In this particular example the fibers are either empty
   or singleton.
+
+In general given a type `A : Type`, 
+a _dependent type over `A`_ is a term of type `A → Type`.
   
 You can check if `2` is even by asking agda to 'normalize' it:
 do `C-c C-n` (`n` for normalize) and type in `isEven 2`.
@@ -140,6 +144,17 @@ where `a : A` and `b : B a`.
 
 There are two ways of using a term in a sigma type.
 We can extract the first part using `fst` or the second part using `snd`.
+Given `x : Σ A B` there are three interpretations of `fst` and `snd`:
+- Viewing `x` as a proof of existence
+  `fst x` provides the witness of existence and `snd` provides the proof 
+  of the property
+- Viewing `x` as a recipe `fst` extracts the first component and 
+  `snd` extracts the second component 
+- Viewing `x` as a point in the total space of a bundle 
+  `fst x` is the point that `x` is over in the base space and `snd x`
+  is the point in the fiber that `x` represents.
+  In particular you can interpret `fst` as projection from the total space
+  to the base space, collapsing fibers.
 For example to define a map that takes an even natural and divides it by two 
 we can 
 ```agda
@@ -147,7 +162,7 @@ div2 : Σ ℕ isEven → ℕ
 div2 x = ? 
 ```
 - Load the file, go to the hole and case on `x` 
-  (you might want to rename `fst₁` and `snd₁`).
+  (you might want to rename `fst₁` and `snd₁`). 
 ```agda
 div2 : Σ ℕ isEven → ℕ
 div2 (fst₁ , snd₁) = {!!}
@@ -174,3 +189,4 @@ since if they were `div2 (2 , tt)` would be 'the same' `div2 (36/2 , tt)`,
 hence `1` would be 'the same' as `18`. 
 > Are they 'the same'? What is 'the same'? 
 <!-- see Arc/Quest smth? -->
+

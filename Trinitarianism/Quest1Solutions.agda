@@ -1,9 +1,6 @@
 module Trinitarianism.Quest1Solutions where
 
-open import Cubical.Core.Everything
-open import Cubical.Data.Unit renaming (Unit to ⊤)
-open import Cubical.Data.Empty
-open import Cubical.Data.Nat hiding (isEven)
+open import Trinitarianism.Preambles.P1
 
 isEven : ℕ → Type
 isEven zero = ⊤

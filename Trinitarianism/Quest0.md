@@ -59,8 +59,10 @@ TrueToTrue = {!!}
   and you need to give a p/r/g.e. of `⊤`
   - you can give it a p/r/g.e. of `⊤` and press `C-c C-SPC` to fill the hole
 
-There is more than one proof (see solutions) - are they the same?
-Here is an important one:
+There is more than one proof (see solutions) - are they 'the same'?
+What is 'the same'?
+
+Here is an important solution:
 
 ```agda
 TrueToTrue' : ⊤ → ⊤

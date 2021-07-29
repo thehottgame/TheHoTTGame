@@ -6,7 +6,7 @@
 
 ** Aims of the HoTT Game
   - To get mathematicians with no experience in proof verification interested in HoTT and able to use Agda for HoTT
-  - [?] Work towards showing an interesting result in HoTT
+  - Big-ass-boss: Loop space of S^1 = Z
   - Try to balance hiding cubical implementations whilst exploiting their advantages
 
 ** Barriers
@@ -76,3 +76,13 @@
   + attempt proof in Cubical Agda but highly non-obvious how to use that fibers are Sets.
   + difficulty is that PathP not in one fiber, but PathOver is, AND PathOver <-> PathP NON-obvious
   + Easy to generalize situation to n-types being closed under Sigma (7.1.8 in HoTT book), we showed this assuming PathPIsoPath
+
+
+**  Minibosses
+- _+_ unique on the naturals
+  + axiomatize addition on naturals
+  + naturals is a set
+  + fun extensionality
+  + contractability
+  + propositions
+  + propositions closed under sigma types

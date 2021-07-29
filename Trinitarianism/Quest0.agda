@@ -1,5 +1,5 @@
 module Trinitarianism.Quest0 where
-open import Trinitarianism.Quest0Preamble
+open import Trinitarianism.Preambles.P0
 
 data ⊤ : Type where
   tt : ⊤

@@ -1,7 +1,6 @@
 module Trinitarianism.Quest1 where
 
-open import Cubical.Core.Everything
-open import Cubical.Data.Nat hiding (isEven)
+open import Trinitarianism.Preambles.P1
 
 isEven : ℕ → Type
 isEven n = {!!}
