@@ -33,7 +33,7 @@ isEven n = ?
   `zero` and `suc n`, 
   since these are the only constructors given 
   in the definition of `ℕ`."
-  This has the following interpretations,
+  This has the following interpretations :
   - propositionally, this is the _principle of mathematical induction_.
   - categorically, this is the universal property of a
     natural numbers object.
@@ -74,17 +74,16 @@ isEven n = ?
   The reason we have access to the term `isEven n` is again
   because we are in the 'inductive step'.
 - There should now be nothing in the 'agda info' window.
-  Everything is working!
+  This means everything is working.
 
 There are three interpretations of `isEven : ℕ → Type`.
 - Already mentioned, `isEven` is a predicate on `ℕ`.
 - `isEven` is a _dependent construction_.
-  Specifically, it is either `⊤` or `⊥` depending on `n : ℕ`.
+  Specifically, `isEven n` is either `⊤` or `⊥` depending on `n : ℕ`.
 - `isEven` is a _bundle over `ℕ`_,
   i.e. an object in the over-category `Type↓ℕ`.
   Pictorially, it looks like
-
-
+  
   <img src="images/isEven.png" 
      alt="isEven" 
      width="500"/>
@@ -96,8 +95,8 @@ There are three interpretations of `isEven : ℕ → Type`.
 
 In general given a type `A : Type`, 
 a _dependent type over `A`_ is a term of type `A → Type`.
-  
-You can check if `2` is even by asking agda to 'normalize' it:
+ 
+You can check if `2` is even by asking agda to 'reduce' the term `isEven 2`:
 do `C-c C-n` (`n` for normalize) and type in `isEven 2`.
 (By the way you can write in numerals since we are now secretly 
 using `ℕ` from the cubical agda library.)
@@ -105,24 +104,25 @@ using `ℕ` from the cubical agda library.)
 Now that we have expressed `isEven` we need to be able write down "existence".
 In maths we might write 
 ```∃ x ∈ ℕ, isEven x```
-which in Agda notation is 
+which in agda notation is 
 ```Σ ℕ isEven```
 This is called a _sigma type_, which has three interpretations:
 - the proposition 'there exists an even natural'
-- the constructions 'naturals `n` with recipes of `isEven n`'
+- the construction 
+  'keep a recipe `n` of naturals together with a recipe of `isEven n`'
 - the total space of the bundle `isEven` over `ℕ`,
-  which is the space consisting of the all the fibers.
+  which is the space obtained by putting together all the fibers.
   Pictorially, it looks like
   <img src="images/isEvenBundle.png" 
      alt="SigmaTypeOfIsEven" 
      width="500"/>
   which can also be viewed as the subset of even naturals,
-  since the fibers are either empty or singleton 
-  (it is a _subsingleton bundle_).
+  since the fibers are either empty or singleton. 
+  (It is a _subsingleton bundle_).
 
 Making a term of this type has three interpretations:
-- giving a term `n : ℕ` and a proof `hn : isEven n` that `n` is even.
-- constructing a natural `n : ℕ` and a recipe `hn : isEven n`.
+- a natural `n : ℕ` together with a proof `hn : isEven n` that `n` is even.
+- a recipe `n : ℕ` together with a recipe `hn : isEven n`.
 - a point in the total space is a point `n : ℕ` downstairs
   together with a point `hn : isEven n` in its fiber.
 
@@ -135,11 +135,11 @@ Name = ?
 - Load the file, go to the hole and refine the goal.
 - If you formulated the statement right it should split into `{!!} , {!!}`
   and you can check the types of terms the holes require.
-- Fill the holes, there are many proofs you can do!
+- Fill the holes. There are many proofs you can do!
 
 In general when `A : Type` is a type and `B : A → Type` is a 
 predicate/dependent construction/bundle over `A`, 
-we can write `Σ A B` as the collection of pairs `a , b` 
+we can write the type `Σ A B` whose terms are pairs `a , b` 
 where `a : A` and `b : B a`.
 
 There are two ways of using a term in a sigma type.
@@ -147,7 +147,7 @@ We can extract the first part using `fst` or the second part using `snd`.
 Given `x : Σ A B` there are three interpretations of `fst` and `snd`:
 - Viewing `x` as a proof of existence
   `fst x` provides the witness of existence and `snd` provides the proof 
-  of the property
+  that the witness `fst x` has the desired property
 - Viewing `x` as a recipe `fst` extracts the first component and 
   `snd` extracts the second component 
 - Viewing `x` as a point in the total space of a bundle 
@@ -156,37 +156,45 @@ Given `x : Σ A B` there are three interpretations of `fst` and `snd`:
   In particular you can interpret `fst` as projection from the total space
   to the base space, collapsing fibers.
 For example to define a map that takes an even natural and divides it by two 
-we can 
+we can do 
 ```agda
 div2 : Σ ℕ isEven → ℕ
 div2 x = ? 
 ```
-- Load the file, go to the hole and case on `x` 
-  (you might want to rename `fst₁` and `snd₁`). 
-```agda
-div2 : Σ ℕ isEven → ℕ
-div2 (fst₁ , snd₁) = {!!}
-```
-- Case on `fst₁` and tell it what to give for `0 , _`
-```agda
-div2 : Σ ℕ isEven → ℕ
-div2 (zero , snd₁) = {!!}
-div2 (suc fst₁ , snd₁) = {!!}
-```
+- Load the file, go to the hole and case on `x`.
+  You might want to rename `fst₁` and `snd₁`. 
+  ```agda
+  div2 : Σ ℕ isEven → ℕ
+  div2 (fst₁ , snd₁) = {!!}
+  ```
+- Case on `fst₁` and tell agda what to give for `0 , _`,
+  i.e. what 'zero divided by two' ought to be.
+  ```agda
+  div2 : Σ ℕ isEven → ℕ
+  div2 (zero , snd₁) = {!!}
+  div2 (suc fst₁ , snd₁) = {!!}
+  ```
 - Navigate to the second hole and case on `fst₁` again.
   Notice that agda knows there is no term looking like `1 , _`
   so it has skipped that case for us.
-- `n + 2 / 2` should just be `n/2 + 1` so try writing in `suc` and refining the goal
+  ```agda
+  div2 : Σ ℕ isEven → ℕ
+  div2 (zero , snd₁) = 0
+  div2 (suc (suc fst₁) , snd₁) = {!!}
+  ```
+- `(n + 2) / 2` should just be `n/2 + 1` 
+  so try writing in `suc` and refining the goal
 - How do you write down `n/2`? Hint: we are in the 'inductive step'.
 
 Try dividing some terms by `2`:
 - Use `C-c C-n` and write `div2 (2 , tt)` for example.
 - Try dividing `36` by `2`.
 
-Important observation: the two proofs `2 , tt` and `36 , tt` of the statement 
+*Important Observation* : 
+the two proofs `2 , tt` and `36 , tt` of the statement 
 'there exists an even natural' are not 'the same' in any sense,
 since if they were `div2 (2 , tt)` would be 'the same' `div2 (36/2 , tt)`,
-hence `1` would be 'the same' as `18`. 
+and hence `1` would be 'the same' as `18`. 
 > Are they 'the same'? What is 'the same'? 
 <!-- see Arc/Quest smth? -->
 

@@ -1,10 +1,11 @@
 The HoTT Game
 =============
 
-The Homotopy Type Theory (HoTT) Game is a project aimed at 
-introducing mathematicians with no experience 
-in proof verification interested in HoTT and able to use Agda for HoTT.
-This guide will help you get the Game working for you.
+The Homotopy Type Theory (HoTT) Game is a project written by mathematicians 
+for mathematicians interested in HoTT and no experience in proof verification,
+with the aim of introducing Cubical Agda as a tool for
+trying out mathematics in HoTT.
+This page will help you get the Game working for you.
 
 ## Installing Agda and the Cubical Agda library
 
@@ -15,8 +16,8 @@ It is recommended that you use Agda in the text editor
 [emacs](
 https://www.gnu.org/software/emacs/tour/index.html),
 in particular 
-[Doom Emacs](https://github.com/hlissner/doom-emacs) is a bit nicer if you
-can't be bothered to do a bunch of configuration.
+[Doom Emacs](https://github.com/hlissner/doom-emacs),
+if you can't be bothered to do a bunch of configuration.
 
 Once you have Emacs and Agda, get the [Cubical Library](
 https://github.com/agda/cubical) (version 0.3)
@@ -38,19 +39,28 @@ the-directory/HoTTGameLib.agda
 ```
 to your `libraries` file as above.
 
-Try opening up `Trinitarianism/AsProps/Quest0.agda` in Emacs
-and do `Ctrl-c Ctrl-l`. 
+Try opening `Trinitarianism/Quest0.agda` in Emacs
+and do `Ctrl-c Ctrl-l`.
 Some text should be highlighted, and any `?` should turn into `{ }`.
 
 ## How the game works
 
 Our Game is under development. Please contact the devs.
-Currently you can try `Trinitarianism/AsProps/Quest0.agda`,
-making use of the accompanying solutions Agda file.
+Currently you can try the _quests_ in the `Trinitarianism` folder.
+Each quest consists of three files, for example :
+- `Trinitarianism/Quest0.md` is the guide for the quest
+  In there, you will find details of the tasks 
+  you must finish in order to complete the quest.
+  For now, it is recommended that
+  you view these online within github.
+- `Trinitarianism/Quest0.agda` is the actual file in which
+  you do the quest. 
+- `Trinitarianism/Quest0Solutions.agda` contains
+  solutions to the tasks in the quest.
 
 ## Emacs and Agda usage
-We have a file with a list of basic Emacs commands and 
-you _should_ be able to learn how to use Agda as you go along.
+We will have a file with a list of basic Emacs commands, 
+but you _should_ be able to learn how to use Agda as you go along.
 
 ## Feedback
 If you have any feedback please contact the devs. 

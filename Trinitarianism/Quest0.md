@@ -13,10 +13,10 @@ we have another type `A → B : Type` which can be seen as
   - internal hom of the category `Type`
 
 To give examples of this, let's make some types first!
+Here is how we define 'true'.
 
 ```agda 
--- Here is how we define 'true'
-data ⊤ : Type u where
+data ⊤ : Type where
   tt : ⊤
 ```
 
@@ -40,14 +40,14 @@ TrueToTrue : ⊤ → ⊤
 TrueToTrue = {!!}
 ```
 
-  - press `C-c C-l` (this means `Ctrl-c Ctrl-l`) to load the document,
-    and now you can fill the holes
+  - enter `C-c C-l` (this means `Ctrl-c Ctrl-l`) to load the document,
+    and now you can fill the hole `{ }`
   - navigate to the hole `{ }` using `C-c C-f` (forward) or `C-c C-b` (backward)
-  - press `C-c C-r` and agda will try to help you (r for refine)
+  - enter `C-c C-r` and agda will try to help you (`r` stands for _refine_)
   - you should see `λ x → { }`
   - navigate to the new hole
-  - `C-c C-,` to check the goal (`C-c C-comma`)
-  - the Goal area should look like
+  - enter `C-c C-,` to check the _goal_ (`C-c C-comma`)
+  - the Goal area ('agda information' window) should look like
 
   ```agda
   Goal: ⊤
@@ -56,10 +56,12 @@ TrueToTrue = {!!}
   ```
 
   - you have a proof/recipe/generalized element `x : ⊤`
-  and you need to give a p/r/g.e. of `⊤`
-  - you can give it a p/r/g.e. of `⊤` and press `C-c C-SPC` to fill the hole
+    and you need to give a proof/recipe/generalized element of `⊤`
+  - you can give it a proof/recipe/generalized element of `⊤` 
+    and press `C-c C-SPC` to fill the hole (`SPC` means the space button)
 
-There is more than one proof (see solutions) - are they 'the same'?
+There is more than one proof (see solutions) - 
+are they 'the same'?
 What is 'the same'?
 
 Here is an important solution:
@@ -72,7 +74,10 @@ TrueToTrue' x = {!!}
   - Naviagate to the hole and check the goal.
   - Note `x` is already taken out for you.
   - You can try type `x` in the hole and `C-c C-c`
-  - `c` stands for 'cases on `x`' and the only case is `tt`.
+  - `c` stands for 'cases'. 
+    Doing `C-c C-c` with `x` in the hole 
+    tells agda to 'do cases on `x`'.
+    The only case is `tt`.
 
 Built into the definition of `⊤` is agda's way of making a map out of ⊤
 into another type A, which we have just used.
@@ -107,7 +112,9 @@ explosion x = {!!}
 Agda knows that there are no cases so there is nothing to do!
 This has three interpretations:
   - false implies anything (principle of explosion)
-  - ?
+  - One can convert recipes of `⊥` to recipes of
+    any other construction since
+    there are no recipes of `⊥`.
   - `⊥` is initial in the category `Type`
 
 We can also encode "natural numbers" as a type.
@@ -118,14 +125,13 @@ data ℕ : Type where
   suc : ℕ → ℕ
 ```
 
-As a construction, this reads '
+As a construction, this reads :
   - `ℕ` is a type of construction
   - `zero` is a recipe for `ℕ`
   - `suc` takes an existing recipe for `ℕ` and gives
       another recipe for `ℕ`.
-  '
 
-We can see `ℕ` categorically :
+We can also see `ℕ` categorically :
 ℕ is a natural numbers object in the category `Type`.
 This means it is equipped with morphisms `zero : ⊤ → ℕ` 
 and `suc : ℕ → ℕ` such that
@@ -136,7 +142,7 @@ such that the diagram commutes:
      width="500"
      class="center"/>
 
-This has no interpretation as a proposition since
+`ℕ` has no interpretation as a proposition since
 there are 'too many proofs' -
 mathematicians classically don't distinguish
 between proofs of a single proposition.
@@ -151,16 +157,19 @@ go to Quest1!
 You may have noticed the notational similarities between 
 `zero : ℕ` and `ℕ : Type`.
 This may have lead you to the question, `Type : ?`.
-In type theory, we simply assert `Type : Type 1`.
-But then we are chasing our tail, asking `Type 1 : ?`.
-Type theorists make sure that every type (the thing on the right side of the `:`)
-itself is a term, and every term has a type.
+In type theory, we simply assert `Type : Type₁`.
+But then we are chasing our tail, asking `Type₁ : Type₂`.
+Type theorists make sure that every type 
+(i.e. anything the right side of `:`)
+itself is a term (i.e. anything on the left of `:`), 
+and every term has a type.
 So what we really need is 
 ```
 Type : Type₁, Type₁ : Type₂, Type₂ : Type₃, ⋯
 ```
 These are called _universes_.
 The numberings of universes are called _levels_.
+We will start using universes in the next quest.
 
 <!--
 Everything we will make will be closed in 

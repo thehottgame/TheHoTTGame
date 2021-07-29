@@ -1,7 +1,7 @@
 
 Trinitarianism
 ==============
-By the end of this arc we will have 'a place to do maths'. 
+By the end of this arc we will (almost) have 'a place to do maths'. 
 The 'types' that will populated this 'place' 
 will have three interpretations:
  - Proof theoretically, with types as propositions
@@ -16,12 +16,14 @@ will have three interpretations:
 ## Terms and Types
 
 Here are some things that we could like to have in a 'place to do maths'
-  - objects to reason about (like ℕ)
-  - recipes for making things inside objects (like + 1)
-  - propositions to reason with (with the data of proofs) (like _ = 0)
+  - objects to reason about (E.g. `ℕ`)
+  - recipes for making things inside objects 
+    (E.g. `n + m` for `n` and `m` in naturals.)
+  - propositions to reason with (E.g. `n = 0` for `n` in naturals.)
 
 In proof theory, types are propositions and terms of a type are their proofs.
-In type theory, types are programs and terms are algorithms.
+In type theory, types are programs / constructions and 
+terms are algorithms / recipes.
 In category theory, types are objects and terms are generalised elements.
 
 ## Non-dependent Types
@@ -34,10 +36,14 @@ In category theory, types are objects and terms are generalised elements.
 
 ## Dependent Types
 
-- predicate / type family / over category
-- substitution / substitution / pullback
-- existence / Σ type / left adjoint to pullback 
-- for all / Π type / right adjoint to pullback
+- predicate / type family / bundle
+- substitution / substitution / pullback (of bundles)
+- existence / Σ type / total space of bundles 
+- for all / Π type / space of sections of bundles
 
+## Something doesn't feel the Same
 
-> Question: how do we talk about equality?
+There will be one thing missing from this 'place to do maths'
+and that is a notion of _equality_.
+This is where HoTT deviates from its predecessors,
+and is the theme of the next arc.
