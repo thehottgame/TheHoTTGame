@@ -14,10 +14,13 @@ which means from now on you can write `0 + 1`
 and so on (with spaces).
 Try coming up with a sensible definition.
 It may not look 'the same' as ours.
+<p>
 <details>
-  <summary>Hint</summary>
-  `n + 0` should be `n` and `n + (m + 1)` should be `(n + m) + 1`
+<summary>Hint</summary>
+
+`n + 0` should be `n` and `n + (m + 1)` should be `(n + m) + 1`
 </details>
+</p>
 
 Now we can make the statement:
 ```agda
