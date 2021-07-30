@@ -44,7 +44,8 @@ TrueToTrue = {!!}
     and now you can fill the hole `{ }`
   - navigate to the hole `{ }` using `C-c C-f` (forward) or `C-c C-b` (backward)
   - enter `C-c C-r` and agda will try to help you (`r` stands for _refine_)
-  - you should see `λ x → { }`
+  - you should see `λ x → { }`. This is agda's notation for `x ↦ { }` 
+    and is called `λ` abstraction, `λ` for 'let'.
   - navigate to the new hole
   - enter `C-c C-,` to check the _goal_ (`C-c C-comma`)
   - the Goal area ('agda information' window) should look like

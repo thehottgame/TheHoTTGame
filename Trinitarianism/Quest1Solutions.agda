@@ -7,9 +7,11 @@ isEven zero = ⊤
 isEven (suc zero) = ⊥
 isEven (suc (suc n)) = isEven n
 
-
 existsEven : Σ ℕ isEven
 existsEven = 4 , tt
+
+_×_ : Type → Type → Type
+A × C = Σ A (λ a → C)
 
 div2 : Σ ℕ isEven → ℕ
 div2 (0 , tt) = 0

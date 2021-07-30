@@ -45,15 +45,15 @@ Some text should be highlighted, and any `?` should turn into `{ }`.
 
 ## How the game works
 
-Our Game is under development. Please contact the devs.
-Currently you can try the _quests_ in the `Trinitarianism` folder.
+Our Game is currently under development. 
+As of now you can try the _quests_ in the `Trinitarianism` folder.
 Each quest consists of three files, for example :
-- `Trinitarianism/Quest0.md` is the guide for the quest
+- `Trinitarianism/Quest0.md` is the guide for the quest.
   In there, you will find details of the tasks 
   you must finish in order to complete the quest.
   For now, it is recommended that
   you view these online within github.
-- `Trinitarianism/Quest0.agda` is the actual file in which
+- `Trinitarianism/Quest0.agda` is the agda file in which
   you do the quest. 
 - `Trinitarianism/Quest0Solutions.agda` contains
   solutions to the tasks in the quest.

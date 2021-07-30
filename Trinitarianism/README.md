@@ -41,9 +41,9 @@ In category theory, types are objects and terms are generalised elements.
 - existence / Σ type / total space of bundles 
 - for all / Π type / space of sections of bundles
 
-## Something doesn't feel the Same
+## What is 'the Same'?
 
 There will be one thing missing from this 'place to do maths'
 and that is a notion of _equality_.
-This is where HoTT deviates from its predecessors,
-and is the theme of the next arc.
+How HoTT treats equality is where it deviates from its predecessors.
+This is the theme of the next arc.

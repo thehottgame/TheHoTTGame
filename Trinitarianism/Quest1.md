@@ -103,9 +103,13 @@ using `ℕ` from the cubical agda library.)
      
 Now that we have expressed `isEven` we need to be able write down "existence".
 In maths we might write 
-```∃ x ∈ ℕ, isEven x```
+```
+∃ x ∈ ℕ, isEven x
+```
 which in agda notation is 
-```Σ ℕ isEven```
+```
+Σ ℕ isEven
+```
 This is called a _sigma type_, which has three interpretations:
 - the proposition 'there exists an even natural'
 - the construction 
@@ -139,8 +143,27 @@ Name = ?
 
 In general when `A : Type` is a type and `B : A → Type` is a 
 predicate/dependent construction/bundle over `A`, 
-we can write the type `Σ A B` whose terms are pairs `a , b` 
-where `a : A` and `b : B a`.
+we can write the sigma type `Σ A B` whose terms are pairs `a , b` 
+where `a : A` and `b : B a`. 
+In the special case when `B` is not dependent on `a : A`,
+i.e. it looks like `λ a → C` for some `C : Type` then 
+`Σ A B` is just 
+- the proposition '`A` and `C`' 
+  since giving a proof of this is the same as giving a proof 
+  of `A` and a proof of `C`
+- a recipe `a : A` together with a recipe `c : C`
+- `B` is now a _trivial bundle_ since the fibers `B a` are 
+  constant with respect to `a : A`.
+  In other words it is just a _product_ `Σ A B ≅ A × C`.
+  For this reason, 
+  some refer to the sigma type as the _dependent product_,
+  but we will avoid this terminology.
+```agda
+_×_ : Type → Type → Type
+A × C = Σ A (λ a → C)
+```
+Agda supports the notation `_×_` (without spaces)
+which means from now on you can write `A × C` (with spaces).
 
 There are two ways of using a term in a sigma type.
 We can extract the first part using `fst` or the second part using `snd`.

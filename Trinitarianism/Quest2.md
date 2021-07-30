@@ -9,9 +9,6 @@ so it should have type `ℕ → ℕ → ℕ`.
 _+_ : ℕ → ℕ → ℕ
 n + m = ?
 ```
-Agda supports the notation `_+_` (without spaces)
-which means from now on you can write `0 + 1` 
-and so on (with spaces).
 Try coming up with a sensible definition.
 It may not look 'the same' as ours.
 <p>
@@ -68,3 +65,26 @@ someone else's definition of addition,
 it might not work anymore.
 > But `_+_` and `_+'_` compute the same values. 
 > Are `_+_` and `_+'_` 'the same'? What is 'the same'?
+
+As the final task of the Quest,
+try to express and prove in agda the statement
+> For any natural number it is even or is is not even.
+We will make a summary of what is needed:
+- a definition of the type `A ⊕ B` (input `\oplus`),
+  which has three interpretations
+  - the proposition '`A` or `B`'
+  - the construction with two ways of making recipes 
+    `left : A → A ⊕ B`
+    and `right : B → A ⊕ B`.
+  - the coproduct of two objects `A` and `B`.
+  The type needs to take in parameters `A : Type` and `B : Type`
+  ```agda
+  data _⊕_ (A : Type) (B : Type) : Type where
+    ???
+  ```
+- a definition of negation. One can motivate it by the following
+  - Define `A ↔ B : Type` for two types `A : Type` and `B : Type`.
+  - Show that for any `A : Type` we have `(A ↔ ⊥) ↔ (A → ⊥)`
+  - Define `¬ : Type → Type` to be `λ A → (A → ⊥)`.
+- a formulation and proof of the statement above
+
