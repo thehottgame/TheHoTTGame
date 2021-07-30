@@ -117,9 +117,11 @@ This is called a _sigma type_, which has three interpretations:
 - the total space of the bundle `isEven` over `ℕ`,
   which is the space obtained by putting together all the fibers.
   Pictorially, it looks like
+  
   <img src="images/isEvenBundle.png" 
      alt="SigmaTypeOfIsEven" 
      width="500"/>
+     
   which can also be viewed as the subset of even naturals,
   since the fibers are either empty or singleton. 
   (It is a _subsingleton bundle_).
