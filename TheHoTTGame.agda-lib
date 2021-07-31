@@ -1,4 +1,4 @@
-name: HoTTGameLib
+name: TheHoTTGame
 include: .
 depend: cubical-0.3
 flags: --cubical --no-import-sorts
