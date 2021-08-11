@@ -6,6 +6,8 @@ the statement
 
 > There exists a natural that is even.
 
+## Predicates / Dependent Constructions / Bundles
+
 This requires the notion of a _predicate_.
 In general a predicate on a type `A : Type` is 
 a term of type `A → Type`. 
@@ -94,13 +96,21 @@ There are three interpretations of `isEven : ℕ → Type`.
   or singleton.
 
 In general given a type `A : Type`, 
-a _dependent type over `A`_ is a term of type `A → Type`.
+a _dependent type `F` over `A`_ is a term `F : A → Type`.
+This should be drawn as a collection of space parameterised 
+by the space `A`.
+
+  <img src="images/generalBundle.png" 
+     alt="Bundle" 
+     width="500"/>
  
 You can check if `2` is even by asking agda to 'reduce' the term `isEven 2`:
 do `C-c C-n` (`n` for normalize) and type in `isEven 2`.
 (By the way you can write in numerals since we are now secretly 
 using `ℕ` from the cubical agda library.)
-     
+
+## Sigma Types
+
 Now that we have expressed `isEven` we need to be able write down "existence".
 In maths we might write 
 ```
@@ -111,6 +121,7 @@ which in agda notation is
 Σ ℕ isEven
 ```
 This is called a _sigma type_, which has three interpretations:
+
 - the proposition 'there exists an even natural'
 - the construction 
   'keep a recipe `n` of naturals together with a recipe of `isEven n`'
@@ -119,25 +130,28 @@ This is called a _sigma type_, which has three interpretations:
   Pictorially, it looks like
   
   <img src="images/isEvenBundle.png" 
-     alt="SigmaTypeOfIsEven" 
-     width="500"/>
+       alt="SigmaTypeOfIsEven" 
+       width="500"/>
      
   which can also be viewed as the subset of even naturals,
   since the fibers are either empty or singleton. 
   (It is a _subsingleton bundle_).
 
+### Making terms in Sigma Types
 Making a term of this type has three interpretations:
+
 - a natural `n : ℕ` together with a proof `hn : isEven n` that `n` is even.
 - a recipe `n : ℕ` together with a recipe `hn : isEven n`.
 - a point in the total space is a point `n : ℕ` downstairs
   together with a point `hn : isEven n` in its fiber.
 
 Now you can prove that there exists an even natural:
+
 - Formulate the statement you need. Make sure you have it of the form 
-```agda
-Name : Statement
-Name = ?
-```
+  ```agda
+  Name : Statement
+  Name = ?
+  ```
 - Load the file, go to the hole and refine the goal.
 - If you formulated the statement right it should split into `{!!} , {!!}`
   and you can check the types of terms the holes require.
@@ -166,6 +180,8 @@ A × C = Σ A (λ a → C)
 ```
 Agda supports the notation `_×_` (without spaces)
 which means from now on you can write `A × C` (with spaces).
+
+### Using Terms in Sigma Types
 
 There are two ways of using a term in a sigma type.
 We can extract the first part using `fst` or the second part using `snd`.
@@ -220,6 +236,24 @@ the two proofs `2 , tt` and `36 , tt` of the statement
 'there exists an even natural' are not 'the same' in any sense,
 since if they were `div2 (2 , tt)` would be 'the same' `div2 (36/2 , tt)`,
 and hence `1` would be 'the same' as `18`. 
-> Are they 'the same'? What is 'the same'? 
-<!-- see Arc/Quest smth? -->
 
+> Are they 'the same'? What is 'the same'? 
+
+## Using the Trinitarianism
+
+We introduced new ideas through all three perspectives,
+as each has their own advantage
+
+- Types as propositions is often the most familiar perspective,
+  and hence can offer guidance for the other two perspectives.
+  However the current mathematical paradigm uses proof irrelevance
+  (two proofs of the same proposition are always 'the same'),
+  which is _not_ compatible with HoTT.
+- Types as constructions conveys the way in which 'data' is important,
+  and should be preserved.
+- Types as objects allows us to draw pictures, 
+  thus guiding us through the syntax with geometric intuition.
+
+For each new idea introduced, 
+make sure to justify it proof theoretically, type theoretically and 
+categorically.

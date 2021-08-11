@@ -1,6 +1,6 @@
-module Trinitarianism.Quest2 where
+module 0Trinitarianism.Quest2 where
 
-open import Trinitarianism.Preambles.P2
+open import 0Trinitarianism.Preambles.P2
 
 _+_ : ℕ → ℕ → ℕ
 n + m = {!!}

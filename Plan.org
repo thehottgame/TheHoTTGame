@@ -78,11 +78,14 @@
   + Easy to generalize situation to n-types being closed under Sigma (7.1.8 in HoTT book), we showed this assuming PathPIsoPath
 
 
-**  Minibosses
-- _+_ unique on the naturals
-  + axiomatize addition on naturals
-  + naturals is a set
-  + fun extensionality
-  + contractability
-  + propositions
-  + propositions closed under sigma types
+** SuperUltraMegaHyperLydianBosses
+- natural number object unique and _+_ unique on any nat num obj
+  + nat num obj unique
+  + _+_ unique on a model of nat num obj
+    - axiomatize addition on naturals
+    - naturals is a set
+    - fun extensionality
+    - contractability
+    - propositions
+    - propositions closed under sigma types
+  + univalence

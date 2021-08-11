@@ -1,6 +1,6 @@
-module Trinitarianism.Quest2Solutions where
+module 0Trinitarianism.Quest2Solutions where
 
-open import Trinitarianism.Preambles.P2
+open import 0Trinitarianism.Preambles.P2
 
 _+_ : ℕ → ℕ → ℕ
 n + zero = n

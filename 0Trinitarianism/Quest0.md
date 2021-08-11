@@ -13,7 +13,8 @@ we have another type `A → B : Type` which can be seen as
   - internal hom of the category `Type`
 
 To give examples of this, let's make some types first!
-Here is how we define 'true'.
+
+## True / Unit / Terminal object
 
 ```agda 
 data ⊤ : Type where
@@ -37,39 +38,60 @@ Let's see an example of _using_ a term of type `⊤`:
 
 ```agda
 TrueToTrue : ⊤ → ⊤
-TrueToTrue = {!!}
+TrueToTrue = { }
 ```
 
-  - enter `C-c C-l` (this means `Ctrl-c Ctrl-l`) to load the document,
-    and now you can fill the hole `{ }`
-  - navigate to the hole `{ }` using `C-c C-f` (forward) or `C-c C-b` (backward)
-  - enter `C-c C-r` and agda will try to help you (`r` stands for _refine_)
-  - you should see `λ x → { }`. This is agda's notation for `x ↦ { }` 
-    and is called `λ` abstraction, `λ` for 'let'.
-  - navigate to the new hole
-  - enter `C-c C-,` to check the _goal_ (`C-c C-comma`)
-  - the Goal area ('agda information' window) should look like
-
-  ```agda
+- enter `C-c C-l` (this means `Ctrl-c Ctrl-l`).
+  Whenever you do this, Agda will check the document is written correctly.
+  This will open the `*Agda Information*` window looking like 
+  
+  ```
+  ?0 : ⊤ → ⊤
+  ?1 : ⊤
+  ?2 : ⊤
+  ```
+  
+  This says you have three unfilled holes.
+- Now you can fill the hole `{ }0`.
+- navigate to the hole `{ }` using `C-c C-f` (forward) or `C-c C-b` (backward)
+- enter `C-c C-r`. The `r` stands for _refine_.
+  Whenever you do this whilst having your cursor in a hole,
+  Agda will try to help you. 
+- you should see `λ x → { }`. This is agda's notation for `x ↦ { }` 
+  and is called `λ` abstraction, think `λ` for 'let'.
+- navigate to the new hole
+- enter `C-c C-,` (this means `Ctrl-c Ctrl-comma`).
+  Whenever you make this command whilst having your cursor in a hole, 
+  Agda will check the _goal_. 
+- the goal (`*Agda information*` window) should look like
+  
+  ```
   Goal: ⊤
   —————————————————————————
   x : ⊤
   ```
+    
+  you have a proof/recipe/generalized element `x : ⊤`
+  and you need to give a proof/recipe/generalized element of `⊤`
+- write the proof/recipe/generalized element `x` of `⊤` in the hole
+- press `C-c C-SPC` to fill the hole with `x`.
+  In general when you have some term (and your cursor) in a hole,
+  doing `C-c C-SPC` will tell Agda to replace the hole with that term.
+  Agda will give you an error if it can't make sense of your term.
+- the `*Agda Information*` window should now only have two unfilled holes left,
+  this means Agda has accepted your proof.
+ 
+  ```
+  ?1 : ⊤
+  ?2 : ⊤
+  ```
 
-  - you have a proof/recipe/generalized element `x : ⊤`
-    and you need to give a proof/recipe/generalized element of `⊤`
-  - you can give it a proof/recipe/generalized element of `⊤` 
-    and press `C-c C-SPC` to fill the hole (`SPC` means the space button)
-
-There is more than one proof (see solutions) - 
-are they 'the same'?
-What is 'the same'?
-
-Here is an important solution:
+There is more than one proof (see solutions).
+Here is an important one:
 
 ```agda
 TrueToTrue' : ⊤ → ⊤
-TrueToTrue' x = {!!}
+TrueToTrue' x = { }
 ```
 
   - Naviagate to the hole and check the goal.
@@ -80,18 +102,30 @@ TrueToTrue' x = {!!}
     tells agda to 'do cases on `x`'.
     The only case is `tt`.
 
+One proof says for any term `x : ⊤` give `x` again.
+The other says it suffices to do the case of `tt`,
+for which we just give `tt`.
+
+> Are these proofs 'the same'? What is 'the same'?
+
+(This question is deep and should be unsettling.
+Sneak peek: they are _internally_ but
+not _externally_ 'the same'.)
+
 Built into the definition of `⊤` is agda's way of making a map out of ⊤
-into another type A, which we have just used.
-It says 'to map out of ⊤ it suffices to do the case when `x` is `tt`', or
+into another type `A`, which we have just used.
+It says 'to map out of `⊤` it suffices to do the case when `x` is `tt`', or
   - the only proof of `⊤` is `tt`
   - the only recipe for `⊤` is `tt`
   - the only one generalized element `tt` in `⊤`
 
 Let's define another type.
 
+## False / Empty / Initial object
+
 ```agda
 
-data ⊥ : Type u where
+data ⊥ : Type where
 
 ```
 
@@ -105,7 +139,7 @@ Let's try mapping out of `⊥`.
 
 ```agda
 explosion : ⊥ → ⊤
-explosion x = {!!}
+explosion x = { }
 ```
 
   - Navigate to the hole and do cases on `x`.
@@ -117,6 +151,8 @@ This has three interpretations:
     any other construction since
     there are no recipes of `⊥`.
   - `⊥` is initial in the category `Type`
+
+## The natural numbers
 
 We can also encode "natural numbers" as a type.
 
@@ -170,22 +206,13 @@ Type : Type₁, Type₁ : Type₂, Type₂ : Type₃, ⋯
 ```
 These are called _universes_.
 The numberings of universes are called _levels_.
-We will start using universes in the next quest.
+It will be crucial that types can be treated as terms.
+This will allows us to
+  - reason about '_structures_' such as 'the structure of a group',
+    think 'for all groups'
+  - do category theory without stepping out of the theory 
+    (no need for classes etc. For experts, we have Grothendieck universes.)
+  - reason about when two types are 'the same', 
+    for example when are two definitions of
+    the natural numbers 'the same'? What is 'the same'?
 
-<!--
-Everything we will make will be closed in 
-the universe we are in.
-For example,
-
-- Do `C-c C-d`. 
-  Agda will ask you to input an expression.
-- Input `⊤ → ℕ` and hit return.
-
-In the 'agda information' window, you should see `Type`.
-This means Agda has _deduced_ `⊤ → ℕ : Type`.
-In general, you can use `C-c C-d` to check
-the type of terms. 
-
-The reason that `⊤ → ℕ` is a type in `Type`
-is because both `⊤, ℕ` are.
--->

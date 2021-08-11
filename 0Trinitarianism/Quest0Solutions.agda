@@ -1,5 +1,5 @@
-module Trinitarianism.Quest0Solutions where
-open import Trinitarianism.Preambles.P0
+module 0Trinitarianism.Quest0Solutions where
+open import 0Trinitarianism.Preambles.P0
 
 
 data ⊤ : Type where

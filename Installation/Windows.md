@@ -4,34 +4,37 @@ How to Install the HoTT Game on Windows
 ## Prerequisites
    
 MUST USE POWERSHELL AS ADMIN
-- chocolatey (this shld be easy)
-- Via chocolatey
+- chocolatey: follow instructions on 
+  [their page](https://chocolatey.org/install)
+- In (admin) powershell do (via chocolatey, cabal)
   - `choco install ghc`
   - `choco install cabal`
-- via cabal
   - `cabal install happy`
   - `cabal install alex`
 
-## The Damned Paths
+<!-- ## The Damned Paths -->
 
-Something something need to add new system environment variables,
-need to ask Samuel again.
+<!-- Something something need to add new system environment variables, -->
+<!-- need to ask Samuel again. -->
 
 ## Doom Emacs
+Get doom emacs following instructions made [here](
+earvingad.github.io/posts/doom_emacs_windows/
+)
 
-IN POWERSHELL LOCAL TO USER
+<!-- IN POWERSHELL LOCAL TO USER -->
 
-- Prerequisites
-  ```
-  choco install git emacs ripgrep
-  choco install fd llvm
-  ``` 
-- Doom Emacs itself
-  ```
-  git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-  ~/.emacs.d/bin/doom install
-  ```
-  **Icons will be missing for windows sadly**
+<!-- - Prerequisites -->
+<!--   ``` -->
+<!--   choco install git emacs ripgrep -->
+<!--   choco install fd llvm -->
+<!--   ```  -->
+<!-- - Doom Emacs itself -->
+<!--   ``` -->
+<!--   git clone https://github.com/hlissner/doom-emacs ~/.emacs.d -->
+<!--   ~/.emacs.d/bin/doom install -->
+<!--   ``` -->
+<!--   **Icons will be missing for windows sadly** -->
   
 ## Development Version of Agda 
 

@@ -59,7 +59,9 @@ Each quest consists of three files, for example :
   solutions to the tasks in the quest.
 
 ## Emacs and Agda usage
-We will have a file with a list of basic Emacs commands, 
+We have a file with a list of [basic Emacs commands](
+https://github.com/Jlh18/TheHoTTGame/blob/main/EmacsCommands.md
+), 
 but you _should_ be able to learn how to use Agda as you go along.
 
 ## Feedback

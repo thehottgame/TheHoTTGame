@@ -1,6 +1,6 @@
-module Trinitarianism.Quest1 where
+module 0Trinitarianism.Quest1 where
 
-open import Trinitarianism.Preambles.P1
+open import 0Trinitarianism.Preambles.P1
 
 isEven : ℕ → Type
 isEven n = {!!}
