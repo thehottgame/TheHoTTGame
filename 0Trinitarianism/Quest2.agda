@@ -2,8 +2,27 @@ module 0Trinitarianism.Quest2 where
 
 open import 0Trinitarianism.Preambles.P2
 
-_+_ : ℕ → ℕ → ℕ
-n + m = {!!}
+isEven : ℕ → Type
+isEven n = {!!}
 
-SumOfEven : (x : Σ ℕ isEven) → (y : Σ ℕ isEven) → isEven (x .fst + y .fst)
-SumOfEven x y = {!!}
+{-
+This is a comment block.
+Remove this comment block and formulate
+'there exists an even natural' here.
+-}
+
+_×_ : Type → Type → Type
+A × C = Σ A (λ a → C)
+
+div2 : Σ ℕ isEven → ℕ
+div2 x = {!!}
+
+private
+  postulate
+    A B C : Type
+
+uncurry : (A → B → C) → (A × B → C)
+uncurry f x = {!!}
+
+curry : (A × B → C) → (A → B → C)
+curry f a b = {!!}

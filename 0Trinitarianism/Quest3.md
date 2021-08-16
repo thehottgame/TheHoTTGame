@@ -44,15 +44,32 @@ There are three ways to interpret this:
   and form a recipe for `isEven` of the result.
 - `isEven (_ .fst + _ .fst)` is a bundle over the categorical product
   `Σ ℕ isEven × Σ ℕ isEven` and `SumOfEven` is a _section_ of the bundle.
+  This means for every point `(x , y)` in `Σ ℕ isEven × Σ ℕ isEven`,
+  it gives a point in the fiber `isEven (x .fst + y .fst)`.
+  
+  (picture)
   
 More generally given `A : Type` and `B : A → Type`
 we can form the _pi type_ `(x : A) → B x : Type` 
-(in other languages `Π (x : ℕ), isEven n`). 
-The notation suggests that these behave like functions,
-and indeed in the special case where the fiber is constant 
-with respect to the base space 
-a section is just a term of type `A → B`, i.e. a function. 
-Hence pi types are also known as _dependent function types_.
+(in other languages `Π (x : ℕ), isEven n`),
+with three interpretations : 
+
+- it is the proposition "for all `x : A`, we have `B x`",
+  and each term is a collection of proofs `bx : B x`,
+  one for each `x : A`.
+- recipes of `(x : A) → B x` are made by
+  converting each `x : A` to some recipe of `B x`.
+  Indeed the function type `A → B` is 
+  the special case where 
+  the type `B x` is not dependent on `x`. 
+  Hence pi types are also known as _dependent function types_.
+  Note that terms in the sigma type are pairs `(a , b)` 
+  whilst terms in the dependent function type are 
+  a collection of pairs `(a , b)` indexed by `a : A`
+- Given the bundle `B : A → Type`,
+  we have the total space `Σ A B` which is equipped with a projection
+  `fst : Σ A B → A`.
+  A term of `(x : A) → B x` is a section of this projection.
 
 We are now in a position to prove the statement. Have fun!
 

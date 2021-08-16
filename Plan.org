@@ -77,6 +77,9 @@
   + difficulty is that PathP not in one fiber, but PathOver is, AND PathOver <-> PathP NON-obvious
   + Easy to generalize situation to n-types being closed under Sigma (7.1.8 in HoTT book), we showed this assuming PathPIsoPath
 
+** Mixolydian Bosses
+
++ universe classifies bundles
 
 ** SuperUltraMegaHyperLydianBosses
 + natural number object unique and `_+_` unique on any nat num obj
@@ -89,7 +92,6 @@
     - propositions
     - propositions closed under sigma types
   + univalence
-
 
 ** Top 100 (set theoretic) misconceptions about type theory
 + Propositions

@@ -2,57 +2,27 @@ module 0Trinitarianism.Quest2Solutions where
 
 open import 0Trinitarianism.Preambles.P2
 
-_+_ : ℕ → ℕ → ℕ
-n + zero = n
-n + suc m = suc (n + m)
+isEven : ℕ → Type
+isEven zero = ⊤
+isEven (suc zero) = ⊥
+isEven (suc (suc n)) = isEven n
 
-_+'_ : ℕ → ℕ → ℕ
-zero +' n = n
-suc m +' n = suc (m +' n)
+existsEven : Σ ℕ isEven
+existsEven = 4 , tt
 
-SumOfEven : (x : Σ ℕ isEven) → (y : Σ ℕ isEven) → isEven (x .fst + y .fst)
-SumOfEven x (zero , hy) = x .snd
-SumOfEven x (suc (suc y) , hy) = SumOfEven x (y , hy)
+_×_ : Type → Type → Type
+A × C = Σ A (λ a → C)
 
-{-
+div2 : Σ ℕ isEven → ℕ
+div2 (0 , tt) = 0
+div2 (suc (suc n) , hn) = suc (div2 (n , hn))
 
-Sum'OfEven : (x : Σ ℕ isEven) → (y : Σ ℕ isEven) → isEven (x .fst +' y .fst)
-Sum'OfEven x (zero , hy) = x .snd
-Sum'OfEven x (suc (suc y) , hy) = Sum'OfEven x (y , hy)
+private
+  postulate
+    A B C : Type
 
--}
+uncurry : (A → B → C) → (A × B → C)
+uncurry f (fst₁ , snd₁) = f fst₁ snd₁
 
-data _⊕_ (A : Type) (B : Type) : Type where
-  left : A → A ⊕ B
-  right : B → A ⊕ B
-
-_↔_ : Type → Type → Type
-_↔_ A B = (A → B) × (B → A)
-
-¬Motivation : (A : Type) → ((A ↔ ⊥) ↔ (A → ⊥))
-¬Motivation A =
-  -- forward direction
-  (
-    -- suppose we have a proof `hiff : A ↔ ⊥`
-    λ hiff →
-    -- give the forward map only
-    fst hiff
-  ) ,
-  -- backward direction; assume a proof hto : A → ⊥
-  λ hto →
-    -- we need to show A → ⊥ which we have already
-    hto
-    ,
-    -- we need to show ⊥ → A, which is the principle of explosion
-    λ ()
-
-¬ : Type → Type
-¬ A = A → ⊥
-
-isEvenDecidable : (n : ℕ) → isEven n ⊕ ¬ (isEven n)
--- zero is even; go left
-isEvenDecidable zero = left tt
--- one is not even; go right
-isEvenDecidable (suc zero) = right (λ ())
--- inductive step
-isEvenDecidable (suc (suc n)) = isEvenDecidable n
+curry : (A × B → C) → (A → B → C)
+curry f a b = f (a , b)

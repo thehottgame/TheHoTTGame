@@ -90,7 +90,7 @@ TrueToTrue = { }
   ?2 : ⊤
   ```
 
-There is more than one proof (see solutions).
+There is more than one proof (see `Quest0Solutions.agda`).
 Here is an important one:
 
 ```agda
@@ -150,7 +150,8 @@ explosion x = { }
 
   - Navigate to the hole and do cases on `x`.
 
-Agda knows that there are no cases so there is nothing to do (see solutions)!
+Agda knows that there are no cases so there is nothing to do!
+(See `Quest0Solutions.agda`)
 This has three interpretations:
 
   - false implies anything (principle of explosion)
