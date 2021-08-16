@@ -1,7 +1,9 @@
 # Pi Types
 
 We will try to formulate and prove the statement 
+
 > The sum of two even naturals is even.
+
 To do so we must define `+` on the naturals.
 Addition takes in two naturals and spits out a natural, 
 so it should have type `ℕ → ℕ → ℕ`.
@@ -27,7 +29,7 @@ SumOfEven x y = ?
 > Tip: `x .fst` is another notation for `fst x`.
 > This works for all sigma types.
 There are three ways to interpret this:
-- For all even naturals `x` and for all even naturals `y`, 
+- For all even naturals `x` and `y`, 
   their sum is even.
 - `isEven (x .fst + y .fst)` is a construction depending on two recipes
   `x` and `y`.

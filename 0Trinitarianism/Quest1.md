@@ -36,9 +36,11 @@ isEven n = ?
   since these are the only constructors given 
   in the definition of `ℕ`."
   This has the following interpretations :
+  
   - propositionally, this is the _principle of mathematical induction_.
   - categorically, this is the universal property of a
     natural numbers object.
+    
 - Navigate to the first hole and check the goal.
   You should see 
   ```
@@ -76,7 +78,8 @@ isEven n = ?
   The reason we have access to the term `isEven n` is again
   because we are in the 'inductive step'.
 - There should now be nothing in the 'agda info' window.
-  This means everything is working.
+  This means everything is working. 
+  (Compare your `isEven` with our [solutions]().)
 
 There are three interpretations of `isEven : ℕ → Type`.
 - Already mentioned, `isEven` is a predicate on `ℕ`.

@@ -1,6 +1,7 @@
 # Terms and Types
 
 There are three ways of looking at `A : Type`.
+
   - proof theoretically, '`A` is a proposition'
   - type theoretically, '`A` is a construction'
   - categorically, '`A` is an object in category `Type`'
@@ -8,6 +9,7 @@ There are three ways of looking at `A : Type`.
 A first example of a type construction is the function type.
 Given types `A : Type` and `B : Type`, 
 we have another type `A → B : Type` which can be seen as
+
   - the proposition '`A` implies `B`'
   - the construction 'ways to convert `A` recipes to `B` recipes'
   - internal hom of the category `Type`
@@ -23,12 +25,14 @@ data ⊤ : Type where
 
 It reads '`⊤` is an inductive type with a constructor `tt`',
 with three interpretations
+
   - `⊤` is a proposition and there is a proof of it, called `tt`.
   - `⊤` is a construction with a recipe called `tt`
   - `⊤` is a terminal object: every object has a morphism into `⊤` given by `· ↦ tt`
 
 In general, the expression `a : A` is read '`a` is a term of type `A`',
 and has three interpretations,
+
   - `a` is a proof of the proposition `A`
   - `a` is a recipe for the construction `A`
   - `a` is a generalised element of the object `A` in the category `Type`.
@@ -115,6 +119,7 @@ not _externally_ 'the same'.)
 Built into the definition of `⊤` is agda's way of making a map out of ⊤
 into another type `A`, which we have just used.
 It says 'to map out of `⊤` it suffices to do the case when `x` is `tt`', or
+
   - the only proof of `⊤` is `tt`
   - the only recipe for `⊤` is `tt`
   - the only one generalized element `tt` in `⊤`
@@ -131,6 +136,7 @@ data ⊥ : Type where
 
 It reads '`⊥` is an inductive type with no constructors',
 with three interepretations
+
   - `⊥` is a proposition with no proofs
   - `⊥` is a construction with no recipes
   - There are no generalized elements of `⊥` (it is a strict initial object)
@@ -144,8 +150,9 @@ explosion x = { }
 
   - Navigate to the hole and do cases on `x`.
 
-Agda knows that there are no cases so there is nothing to do!
+Agda knows that there are no cases so there is nothing to do (see solutions)!
 This has three interpretations:
+
   - false implies anything (principle of explosion)
   - One can convert recipes of `⊥` to recipes of
     any other construction since
@@ -163,6 +170,7 @@ data ℕ : Type where
 ```
 
 As a construction, this reads :
+
   - `ℕ` is a type of construction
   - `zero` is a recipe for `ℕ`
   - `suc` takes an existing recipe for `ℕ` and gives
@@ -174,6 +182,7 @@ This means it is equipped with morphisms `zero : ⊤ → ℕ`
 and `suc : ℕ → ℕ` such that
 given any `⊤ → A → A` there exist a unique morphism `ℕ → A`
 such that the diagram commutes:
+
 <img src="images/nno.png" 
      alt="nno" 
      width="500"
@@ -208,6 +217,7 @@ These are called _universes_.
 The numberings of universes are called _levels_.
 It will be crucial that types can be treated as terms.
 This will allows us to
+
   - reason about '_structures_' such as 'the structure of a group',
     think 'for all groups'
   - do category theory without stepping out of the theory 
