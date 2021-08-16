@@ -60,7 +60,7 @@ Each quest consists of three files, for example :
 
 ## Emacs and Agda usage
 We have a file with a list of [basic Emacs commands](
-https://github.com/Jlh18/TheHoTTGame/blob/main/EmacsCommands.md
+https://github.com/thehottgame/TheHoTTGame/blob/main/EmacsCommands.md
 ), 
 but you _should_ be able to learn how to use Agda as you go along.
 
