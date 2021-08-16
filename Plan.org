@@ -79,9 +79,9 @@
 
 
 ** SuperUltraMegaHyperLydianBosses
-- natural number object unique and _+_ unique on any nat num obj
++ natural number object unique and `_+_` unique on any nat num obj
   + nat num obj unique
-  + _+_ unique on a model of nat num obj
+  + `_+_` unique on a model of nat num obj
     - axiomatize addition on naturals
     - naturals is a set
     - fun extensionality
@@ -89,3 +89,16 @@
     - propositions
     - propositions closed under sigma types
   + univalence
+
+
+** Top 100 (set theoretic) misconceptions about type theory
++ Propositions
++ Proof relevance
++ Propositions are _inside the theory_
++ Membership not the same as :
+  + typing is unique (doesn't make sense to intersect two types)
+  +
++ Though set theory had fewer axioms type theory's assumptions are more intuitive (hence intionistic type theory)
+  There is no fiddling about with membership to construct things e.g. cartesian product
++ 'we cannot use LEM' ~ not assuming law of excluded middle _globally_ means type theory theorems are stronger!
++
