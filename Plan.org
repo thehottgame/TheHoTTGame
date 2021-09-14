@@ -100,7 +100,18 @@
 + Membership not the same as :
   + typing is unique (doesn't make sense to intersect two types)
   +
-+ Though set theory had fewer axioms type theory's assumptions are more intuitive (hence intionistic type theory)
-  There is no fiddling about with membership to construct things e.g. cartesian product
-+ 'we cannot use LEM' ~ not assuming law of excluded middle _globally_ means type theory theorems are stronger!
-+
++ Though set theory had fewer axioms type theory's assumptions are
+  more intuitive (hence intionistic type theory).
+  There is no fiddling about with membership to construct things
+  e.g. cartesian product
++ 'we cannot use LEM' ~ not assuming law of excluded middle _globally_ means
+  type theory theorems are stronger!
+
+**  Fundamental group of S1
++ def of S¹
++ a bunch of stuff about ℤ
++ isoToPath to make ℤ ≡ ℤ
++ subst
++ funExt
++ set-truncation
++ paths as equality
