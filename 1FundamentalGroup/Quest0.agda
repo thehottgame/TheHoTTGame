@@ -3,13 +3,9 @@ module 1FundamentalGroup.Quest0 where
 open import Cubical.Data.Empty
 open import Cubical.Data.Unit renaming ( Unit to ⊤ )
 open import Cubical.Data.Bool
-open import Cubical.Foundations.Prelude
+open import Cubical.Foundations.Prelude renaming ( subst to endPt )
 open import Cubical.Foundations.Isomorphism renaming ( Iso to _≅_ )
 open import Cubical.Foundations.Path
-
-private
-  variable
-    u : Level
 
 data S¹ : Type where
   base : S¹
@@ -18,32 +14,20 @@ data S¹ : Type where
 Refl : base ≡ base
 Refl = λ i → base
 
+{- transport
+
+To follow a point in `a : A` along a path `p : A ≡ B`
+we use
+
+  transport : {A B : Type u} → A ≡ B → A → B
+
+Why do we propify? Discuss.
+
+-}
+
 Flip : Bool → Bool
 Flip false = true
 Flip true = false
-
-{- Iso
-
-We show that Flip is an isomorphism from Bool → Bool
-with inverse Flip.
-
-A proof of `A ≅ B` (input \cong or write Iso A B) is given by
-
-  iso f i s r
-
-where
-
-  f : A → B and i : B → A
-
-are the map and its inverse,
-here both `f` and `i` are Flip
-
-`s` is a proof that `f` is a section with
-right inverse `i` and
-`r` is a proof that `f` is a retraction
-with left inverse `i`
-
--}
 
 flipIso : Bool ≅ Bool
 flipIso = iso Flip Flip s r where
@@ -55,29 +39,8 @@ flipIso = iso Flip Flip s r where
   r false = refl
   r true = refl
 
-{- Path ≡
-
-A corollary of univalence is
-`isoToPath` which takes an isomorphism
-`f : A ≅ B` and gives a path
-`fPath : A ≡ B`.
-The resulting path has the important property
-that when you follow (transport/subst)
-a point in `A` along the path
-you will get the point `f(a)` in `B`
-
--}
-
 flipPath : Bool ≡ Bool
 flipPath = isoToPath flipIso
-
-{-
-
-Try out `transport` on `true : Bool` and
-`flipPath` by doing `C-c C-n`
-and typing in `transport flipPath true`
-
--}
 
 {- bundle over S¹
 
@@ -117,8 +80,8 @@ Note that `doubleCover base` is just `Bool` (externally).
 
 -}
 
-SubstTrue : (p : base ≡ base) → doubleCover base
-SubstTrue p = subst doubleCover p true
+endPtOfTrue : (p : base ≡ base) → doubleCover base
+endPtOfTrue p = endPt doubleCover p true
 
 {-
 
@@ -145,4 +108,4 @@ by
 -}
 
 refl≢loop : refl ≡ loop → ⊥
-refl≢loop p = true≢false (cong SubstTrue p)
+refl≢loop p = true≢false (cong endPtOfTrue p)
