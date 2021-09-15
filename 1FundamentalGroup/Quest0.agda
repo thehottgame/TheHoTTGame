@@ -4,7 +4,7 @@ open import Cubical.Data.Empty
 open import Cubical.Data.Unit renaming ( Unit to ⊤ )
 open import Cubical.Data.Bool
 open import Cubical.Foundations.Prelude
-open import Cubical.Foundations.Isomorphism
+open import Cubical.Foundations.Isomorphism renaming ( Iso to _≅_ )
 open import Cubical.Foundations.Path
 
 private
@@ -15,68 +15,8 @@ data S¹ : Type where
   base : S¹
   loop : base ≡ base
 
--- if you don't know how to input a character
--- go to evil-mode, put your cursor on the character
--- and do `SPC h '`
-
-¬ : Type u → Type u
-¬ A = A → ⊥
-
-_≢_ : {A : Type u} → (x y : A) → Type u
-x ≢ y = ¬ (x ≡ y)
-
-_≅_ = Iso
-
-{- Bool
-
-data Bool : Type where
-  true : Bool
-  false : Bool
-
-The above definition for the Booleans
-can be interpreted as
-
-- a construction with only two recipes
-  `true` and `false`
-- a space with two points `true` and `false`.
-  This space is discrete in the sense that
-  we haven't specified any paths.
-
-Our goal is to show
-
-  refl ≢ loop (input \nequiv)
-
-that there is path (aka homotopy) from `refl` to `loop`.
-To do so we must assume there is such a path and derive
-a contradiction.
-The contradiction we will try to reach is that `true ≡ false`.
-Indeed it does not hold:
-
--}
-
-
-{- transport
-
-To follow a point in `a : A` along a path `p : A ≡ B`
-we use
-
-  transport : {A B : Type u} → A ≡ B → A → B
-
-Why do we propify? Discuss.
-
--}
-
-true≢false' : true ≢ false
-true≢false' h = transport ⊤≡⊥ tt where
-
-  propify : Bool → Type
-  propify false = ⊥
-  propify true = ⊤
-
-  ⊤≡⊥ : ⊤ ≡ ⊥
-  ⊤≡⊥ = cong propify h
-
-
+Refl : base ≡ base
+Refl = λ i → base
 
 Flip : Bool → Bool
 Flip false = true
@@ -157,7 +97,6 @@ with the fiber we set for `base`, which is `Bool`.
 doubleCover : S¹ → Type
 doubleCover base = Bool
 doubleCover (loop i) = flipPath i
-
 {- subst
 
 Given a bundle `B : A → Type u`
@@ -205,5 +144,5 @@ by
 
 -}
 
-refl≢loop : refl ≢ loop
+refl≢loop : refl ≡ loop → ⊥
 refl≢loop p = true≢false (cong SubstTrue p)

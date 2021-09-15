@@ -6,6 +6,9 @@ Installing TheHoTTGame on MacOS
 `brew link --overwrite git`
 `rm -r .emacs.d`
 
+`export PATH="/usr/local/bin:$PATH"`
+in `.bash_profile` (if old)
+
 ```
 # required dependencies
 brew install git ripgrep
@@ -28,4 +31,12 @@ brew install emacs-mac --with-modules --with-emacs-sexy-icon --with-no-title-bar
 
 # Make an app link in Applications
 ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
+
+# doom emacs
+git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+
+# so that you can use 'doom' anywhere
+export PATH=”$HOME/.emacs.d/bin:$PATH”
+
 ```
