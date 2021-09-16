@@ -32,7 +32,7 @@ in the first case `Type` is the space of spaces.
 <details>
 <summary>Further details</summary>
 
-This is called a __higher inductive type_ (HIT), which generally
+This is called a _higher inductive type_ (HIT), which generally
 follows the format of
 
 - `data` 
