@@ -24,7 +24,7 @@ see `1FundamentalGroup/Quest0SideQuests/SideQuest1`.
   it should be asking for a path from `true` to `false`.
 
 To give this path we need to visualise 'lifting' `Refl`, `loop`
-and the homotopy `h : refl ≡ loop`
+and the homotopy `h : Refl ≡ loop`
 along the Boolean-bundle `doubleCover`.
 When we 'lift' `Refl` - starting at the point `true : doubleCover base` -
 it will still be a constant path at `true`,
@@ -34,8 +34,8 @@ it will look like
 
  <!-- [insert picture] -->
 
-The homotopy `h : refl ≡ loop` is 'lifted'
-(starting at 'lifted `refl`')
+The homotopy `h : Refl ≡ loop` is 'lifted'
+(starting at 'lifted `Refl`')
 to some kind of surface 
 
 <!-- [insert picture] -->
@@ -83,7 +83,7 @@ You can verify our expectation that `endPtOfTrue Refl` is `true`
 and `endPtOfTrue loop` is `false` using `C-c C-n`.
 
 Lastly we need to make the function `endPtOfTrue`
-take the path `h : refl ≡ loop` to a path from `true` to `false`.
+take the path `h : Refl ≡ loop` to a path from `true` to `false`.
 In general if `f : A → B` is a function and `p` is a path
 between points `x y : A` then we get a map `cong f p`
 from `f x` to `f y`.
