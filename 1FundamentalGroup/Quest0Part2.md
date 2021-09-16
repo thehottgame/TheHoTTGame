@@ -1,4 +1,4 @@
-# `refl ≡ loop` is empty - Defining `flipPath` via Univalence
+# `Refl ≡ loop` is empty - Defining `flipPath` via Univalence
 
 In this part, we will define the path `flipPath : Bool ≡ Bool`.
 Recall the picture of `doubleCover`.
@@ -12,13 +12,13 @@ We proceed in steps :
 
 1. Define the function `Flip : Bool → Bool`.
 2. Promote this to an isomorphism `flipIso : Bool ≅ Bool`.
-3. The intuition is that the univalence axiom asserts that
-   paths in the space of spaces correspond to
+3. We use _univalence_ to turn `flipIso` into 
+   a path `flipPath : Bool ≡ Bool`.
+   The univalence axiom asserts that
+   paths in `Type` - the space of spaces - correspond to
    homotopy-equivalences of spaces.
    As a corollary,
-   we can make paths in `Type` from isomorphisms of types.
-   We use this to turn `flipIso` into 
-   a path `flipPath : Bool ≡ Bool`.
+   we can make paths in `Type` from isomorphisms in `Type`.
 
 ## The function
 
@@ -29,18 +29,17 @@ We proceed in steps :
   Flip x = {!!}
   ```
 - Write `x` inside the hole,
-  and do `C-c C-c` with your cursor still inside.
-  The `c` stands for _cases_.
+  and do `C-c C-c` with your cursor still inside. 
   You should now see :
   ```agda
   Flip : Bool → Bool
   Flip false = {!!}
   Flip true = {!!} 
   ```
-  What this is saying is that 
+  This means : 
   the space `Bool` is made of two points `false, true` and nothing else,
-  so to map out of it, 
-  it suffices to give something to map `false` and `true` to respectively.
+  so to map out of `Bool` it suffices 
+  to find images for `false` and `true` respectively.
 - Since we want `Flip` to flip `true` and `false`,
   fill the first hole with `true` and the second with `false`.
 - To check things have worked,
@@ -57,7 +56,7 @@ We proceed in steps :
   This means `agda` recognises `Flip` as a well-formulated term
   and is a point in the space of maps from `Bool` to `Bool`.
 - We can also ask `agda` to compute outputs of `Flip`.
-  Try `C-c C-n`. (`n` stands for _normalise_.)
+  Try `C-c C-n` (`n` stands for _normalise_),
   `agda` should again be asking for an expression.
   Enter `Flip true`.
   In the `*Agda Information*` window, you should see `false`, as desired.
@@ -75,10 +74,10 @@ We proceed in steps :
   flipIso : Bool ≅ Bool
   flipIso = iso {!!} {!!} {!!} {!!}  
   ```
-- Check that what `agda` is expecting in the first two holes
-  are functions `Bool → Bool`.
-  These are our maps back and forth which will constitute the isomorphism
-  so write `Flip` and `Flip` in the first two holes.
+- Check that `agda` expects functions `Bool → Bool` 
+  to go in the first two holes.
+  These are the maps back and forth which constitute the isomorphism,
+  so fill them with `Flip` and its inverse `Flip`.
 - Check the goal of the next two holes.
   They should be 
   ```agda
@@ -90,6 +89,7 @@ We proceed in steps :
   ```
   This means we need to prove
   `Flip` is a right inverse and a left inverse of `Flip`.
+
 - Write the following so that your code looks like 
   ```agda
   flipIso : Bool ≅ Bool 
@@ -104,6 +104,30 @@ We proceed in steps :
   The `where` allows you to make definitions local to the current definition,
   in the sense that you will not be able to access `s` and `r` outside this proof.
   Note that what follows `where` must be indented.
+  <p>
+  <details>
+  <summary>Skipped step</summary>
+
+- To find out why we put `s b` on the left you can try 
+  ```agda
+  flipIso : Bool ≅ Bool 
+  flipIso = iso Flip Flip s r where
+
+    s : section Flip Flip
+    s = {!!}
+    
+    r : retract Flip Flip
+    r = {!!} 
+  ```
+- Check the goal of the hole `s = {!!}` and try using `C-c C-r`.
+  It should give you `λ x → {!!}`.
+  This says it's asking for some new proof for each `x : Bool`.
+  If you check the goal you can find out what proof it wants
+  and that `x : Bool`.
+- To do a proof for each `x : Bool`, we can also just stick 
+  `x` before the `=` and do away with the `λ`.
+  </details>
+  </p>
 - Check the goal of the hole `s b = {!!}`.
   In the `*Agda Information*` window, you should see 
   ```agda
@@ -111,14 +135,20 @@ We proceed in steps :
   —————————————————————————————————
   b : Bool 
   ```
+  This says it suffices to find a path from `Flip (Flip b)` to `b`
+  in the space `Bool`.
   Try to prove this.
   <p>
   <details>
-  <summary>Hint</summary>
+  <summary>Tips</summary>
 
-  You need to do cases on what `b` can be.
+  You need to case on what `b` can be.
   Then for the case of `true` and `false`,
   try `C-c C-r` to see if `agda` can help.
+  
+  The added benefit of having `b` before the `=`
+  is exactly this - that we can case on what `b` can be.
+  This is called _pattern matching_.
   </details>
   </p>
 - Do the same for `r b = {!!}`.

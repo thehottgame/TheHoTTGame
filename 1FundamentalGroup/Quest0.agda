@@ -29,6 +29,9 @@ Flip : Bool → Bool
 Flip false = true
 Flip true = false
 
+-- notice we used `refl` instead of `λ i → false`,
+-- you might want to find out what `refl` does
+-- by looking up the definition
 flipIso : Bool ≅ Bool
 flipIso = iso Flip Flip s r where
   s : section Flip Flip
@@ -85,7 +88,7 @@ endPtOfTrue p = endPt doubleCover p true
 
 {-
 
-You can check that `SubstTrue refl` and `SubstTrue loop`
+You can check that `SubstTrue Refl` and `SubstTrue loop`
 are using `C-c C-n`
 
 -}
@@ -102,10 +105,10 @@ gives us a path in `B` from `f x` to `f y`
 We can use the above to get the contradiction we want
 by
 
-- assuming `p : refl ≡ loop`
-- deducing `SubstTrue refl ≡ SubstTrue loop` using `cong`
+- assuming `p : Refl ≡ loop`
+- deducing `SubstTrue Refl ≡ SubstTrue loop` using `cong`
 
 -}
 
-refl≢loop : refl ≡ loop → ⊥
-refl≢loop p = true≢false (cong endPtOfTrue p)
+Refl≢loop : Refl ≡ loop → ⊥
+Refl≢loop p = true≢false (cong endPtOfTrue p)

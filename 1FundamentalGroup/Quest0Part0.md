@@ -9,8 +9,8 @@ We begin by formalising the problem statement.
 
 A contruction of 'the circle' is :
 
-- a point
-- an edge from that point to itself
+- a point called `base`
+- an edge from that point to itself called `loop`
 
 Here is our definition of the circle in `agda`.
 
@@ -23,6 +23,27 @@ data S¹ : Type where
 The `base ≡ base` is the _space of paths from `base` to `base`_.
 The definition asserts that there is a point called `loop`
 in `base ≡ base`, i.e. a path from `base` to itself.
+Whenever we have a colon like `S¹ : Type` or `base : S¹`
+it says the former is a point in the latter, 
+where the latter is viewed as a space;
+in the first case `Type` is the space of spaces.
+
+<p>
+<details>
+<summary>Further details</summary>
+
+This is called a __higher inductive type_ (HIT), which generally
+follows the format of
+
+- `data` 
+- the name of the HIT - in our case `S¹`
+- the _type_ of the HIT, in our case `Type`
+- `where` followed by
+- the _constructors_ of the HIT, in our case `base` and `loop`,
+  which we will think of as vertices, edges, surfaces, and so on
+  
+</details>
+</p>
 
 An "edge" is the same as a path.
 There are other paths in `S¹`, 
@@ -83,6 +104,8 @@ We will fill the hole `{ }0`.
 - the number of holes in the `*Agda Information*` 
   window should have gone down by one,
   this means `agda` has accepted what you filled this hole with.
+  Just to be sure you can also reload the `agda` file and check
+  that `agda` has no complaints.
 - if you want to play around with this you can start again 
   by replacing what you wrote with `?` and doing
   `C-c C-l` 
