@@ -4,7 +4,7 @@ Fundamental Group of S¹
 Prerequisites :
 - circle 
 - loop space
-- have useless maps S¹ → ℤ and ℤ → S¹
+- have useless maps pi(S¹) → ℤ and ℤ → pi(S¹)
 
 
 
