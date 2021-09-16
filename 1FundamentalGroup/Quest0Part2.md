@@ -108,24 +108,24 @@ We proceed in steps :
   <details>
   <summary>Skipped step</summary>
 
-- To find out why we put `s b` on the left you can try 
-  ```agda
-  flipIso : Bool ≅ Bool 
-  flipIso = iso Flip Flip s r where
+  - To find out why we put `s b` on the left you can try 
+    ```agda
+    flipIso : Bool ≅ Bool 
+    flipIso = iso Flip Flip s r where
 
-    s : section Flip Flip
-    s = {!!}
+      s : section Flip Flip
+      s = {!!}
     
-    r : retract Flip Flip
-    r = {!!} 
-  ```
-- Check the goal of the hole `s = {!!}` and try using `C-c C-r`.
-  It should give you `λ x → {!!}`.
-  This says it's asking for some new proof for each `x : Bool`.
-  If you check the goal you can find out what proof it wants
-  and that `x : Bool`.
-- To do a proof for each `x : Bool`, we can also just stick 
-  `x` before the `=` and do away with the `λ`.
+      r : retract Flip Flip
+      r = {!!} 
+    ```
+  - Check the goal of the hole `s = {!!}` and try using `C-c C-r`.
+    It should give you `λ x → {!!}`.
+    This says it's asking for some new proof for each `x : Bool`.
+    If you check the goal you can find out what proof it wants
+    and that `x : Bool`.
+  - To do a proof for each `x : Bool`, we can also just stick 
+    `x` before the `=` and do away with the `λ`.
   </details>
   </p>
 - Check the goal of the hole `s b = {!!}`.
@@ -135,8 +135,6 @@ We proceed in steps :
   —————————————————————————————————
   b : Bool 
   ```
-  This says it suffices to find a path from `Flip (Flip b)` to `b`
-  in the space `Bool`.
   Try to prove this.
   <p>
   <details>
