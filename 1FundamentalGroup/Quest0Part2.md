@@ -2,7 +2,11 @@
 
 In this part, we will define the path `flipPath : Bool ≡ Bool`.
 Recall the picture of `doubleCover`.
-(Insert gif.)
+
+<img src="images/doubleCover.png" 
+     alt="doubleCover" 
+     width="500"
+     class="center"/>
 
 This means we need `flipPath` to correspond to 
 the unique non-identity permutation of `Bool`

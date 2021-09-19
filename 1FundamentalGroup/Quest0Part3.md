@@ -32,26 +32,29 @@ drawn as a dot `true`.
 When we 'lift' `loop` - starting at the point `true : doubleCover base` -
 it will look like
 
- <!-- [insert picture] -->
+<img src="images/lifted_loops.png" 
+     alt="lifted_loops" 
+     width="500"
+     class="center"/>
 
 The homotopy `h : Refl ≡ loop` is 'lifted'
 (starting at 'lifted `Refl`')
 to some kind of surface 
 
-<!-- [insert picture] -->
+<img src="images/lifted_homotopy.png" 
+     alt="lifted_homotopy" 
+     width="500"
+     class="center"/>
 
 According to the pictures the end point of the 'lifted' 
 `Refl` is `true` and the end point of the 'lifted' `loop` is `false`.
 We are interested in the end points of each 
 'lifted paths' in the 'lifted homotopy',
 since this forms a path in the endpoint fiber `doubleCover base`
-from `true` to `false`
-
-<!-- [insert picture] -->
+from `true` to `false`.
 
 We can evaluate the end points of both 'lifted paths' by using 
-something in the cubical library called `endPt` 
-(originally called `subst`).
+something in the cubical library (called `subst`) which we call `endPt`.
 
 ```agda
 endPt : (B : A → Type) (p : x ≡ y) (bx : B x) → B y
@@ -93,6 +96,6 @@ from `f x` to `f y`.
 cong : (f : A → B) → (p : x ≡ y) → f x ≡ f y
 ```
 
-Using `cong` and `endPtOfTrue` you should be able to complete Quest0.
+Using `cong` and `endPtOfTrue` you should be able to complete `Quest0`.
 If you have done everything correctly you can reload `agda` and see that
 you have no remaining goals.

@@ -41,7 +41,12 @@ you can hover over `Bool` in `agda` and use `M-SPC c d`.)
 We will create a map `doubleCover : S¹ → Type` that sends
 `base` to `Bool` and the path `loop` to a non-trivial path `flipPath : Bool ≡ Bool`
 in the space of spaces.
-(Insert gif of double cover.)
+
+<img src="images/doubleCover.png" 
+     alt="doubleCover" 
+     width="500"
+     class="center"/>
+
 Viewing the picture vertically,
 for each point `x : S¹`, 
 we call `doubleCover x` the _fiber of `doubleCover` over `x`_.
@@ -52,7 +57,11 @@ in the fiber of `doubleCover` over `base`
 by 'lifting the homotopy' `h : Refl ≡ loop` and considering the end points of 
 the 'lifted paths'.
 `Refl` will 'lift' to a 'constant path' and `loop` will 'lift' to 
-(Insert picture of 'lift' of `loop`)
+
+<img src="images/lifted_loops.png" 
+     alt="lifted_loops" 
+     width="500"
+     class="center"/>
 
 Let's assume for the moment that we have `flipPath` already and
 define `doubleCover`.

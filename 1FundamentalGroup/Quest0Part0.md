@@ -66,7 +66,7 @@ We will fill the hole `{ }0`.
   ...
   ```
   
-  This says you have some unfilled __holes_.
+  This says you have some unfilled _holes_.
 - navigate to the hole `{ }0` using `C-c C-f` (forward) or `C-c C-b` (backward)
 - enter `C-c C-r`. The `r` stands for _refine_.
   Whenever you do this whilst having your cursor in a hole,
