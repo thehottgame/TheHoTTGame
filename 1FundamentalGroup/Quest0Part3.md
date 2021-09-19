@@ -34,7 +34,7 @@ it will look like
 
 <img src="images/lifted_loops.png" 
      alt="lifted_loops" 
-     width="500"
+     width="1000"
      class="center"/>
 
 The homotopy `h : Refl ≡ loop` is 'lifted'
@@ -43,7 +43,7 @@ to some kind of surface
 
 <img src="images/lifted_homotopy.png" 
      alt="lifted_homotopy" 
-     width="500"
+     width="1000"
      class="center"/>
 
 According to the pictures the end point of the 'lifted' 
