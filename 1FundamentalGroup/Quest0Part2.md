@@ -5,7 +5,7 @@ Recall the picture of `doubleCover`.
 
 <img src="images/doubleCover.png" 
      alt="doubleCover" 
-     width="500"
+     width="1000"
      class="center"/>
 
 This means we need `flipPath` to correspond to 
