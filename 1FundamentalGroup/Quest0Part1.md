@@ -44,7 +44,7 @@ in the space of spaces.
 
 <img src="images/doubleCover.png" 
      alt="doubleCover" 
-     width="500"
+     width="1000"
      class="center"/>
 
 Viewing the picture vertically,
@@ -60,7 +60,7 @@ the 'lifted paths'.
 
 <img src="images/lifted_loops.png" 
      alt="lifted_loops" 
-     width="500"
+     width="1000"
      class="center"/>
 
 Let's assume for the moment that we have `flipPath` already and
