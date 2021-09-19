@@ -70,7 +70,7 @@ define `doubleCover`.
   you have loaded the file with `C-c C-l`.
   ```agda
   doubleCover : S¹ → Type
-  doubleCover x = ?
+  doubleCover x = {!!}
   ```
 - Navigate your cursor to the hole,
   write `x` and do `C-c C-c`.

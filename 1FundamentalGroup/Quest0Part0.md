@@ -48,7 +48,13 @@ follows the format of
 An "edge" is the same as a path.
 There are other paths in `S¹`, 
 for example the _constant path at `base`_.
-In `1FundamentalGroup/Quest0.agda` locate `Refl : base ≡ base`,
+In `1FundamentalGroup/Quest0.agda` naviage to 
+
+```agda
+Refl : base ≡ base
+Refl = {!!}
+```
+
 we will guide you through defining it.
 We are about to construct a path `Refl : base ≡ base` 
 (read path `Refl` from `base` to `base`)
