@@ -1,8 +1,9 @@
-
+# Homotopy Levels
 
 The loop space can contain higher homotopical information that
 the fundamental group does not capture.
 For example, consider `S²`.
+
 ```agda
 data S² : Type where
   base : S²
@@ -32,7 +33,7 @@ So `base ≡ base` has non-trivial path structure.
 
 <img src="images/S2.png" 
      alt="S2" 
-     width="500"
+     width="1000"
      class="center"/>
 
 Let's be more precise about homotopical data : 
@@ -81,6 +82,11 @@ In the cubical library we have the result
 isProp→isSet : (A : Type) → isProp A → isSet A
 ```
 
+which we will not prove.
+Assuming `¬isSetS¹`, use `isProp→isSet` to deduce `¬isPropS¹`.
+<!-- from now you should fill in the hypotheses of the proof yourself -->
+<!-- (put `h` before the `=` sign or use `C-c C-r`).  -->
+
 <p>
 <details>
 <summary>HLevel</summary>
@@ -90,27 +96,21 @@ Generalisation to HLevel and isHLevel n → isHLevel suc n??
 </details>
 </p>
 
-
-which we will not prove.
-Use `isProp→isSet` to conclude `¬isPropS¹` (using `¬isSetS¹`),
-from now you should fill in the hypotheses of the proof yourself
-(put `h` before the `=` sign or use `C-c C-r`). 
-
 Turning our attention to `¬isSetS¹`,
-again supposing `h : isSet S¹` -
+again given `h : isSet S¹` -
 a map continuously taking each pair `x y : A` 
 to a point in `isProp (x ≡ y)`.
 We can apply `h` twice to the only point `base` available to us,
 obtaining a point of `isProp (base ≡ base)`.
-Can we map this into the empty space?
+Try mapping from this into the empty space.
 
 <p>
 <details>
 <summary>Hint 0</summary>
 
 We have already shown that `Refl ≡ loop` is the empty space.
-We have imported `Quest0` for you, so you can just quote the 
-result from there.
+We have imported `Quest0Solutions.agda` for you, 
+so you can just quote the result from there.
 
 </details>
 </p>

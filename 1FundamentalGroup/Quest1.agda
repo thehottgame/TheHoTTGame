@@ -7,7 +7,7 @@ open import Cubical.Data.Int
 open import Cubical.Data.Empty
 open import Cubical.Foundations.Prelude
 open import Cubical.Foundations.HLevels
-open import 1FundamentalGroup.Quest0 using ( Refl ; Refl≢loop )
+open import 1FundamentalGroup.Quest0Solutions using ( Refl ; Refl≢loop )
 
 Ω : (A : Type) (a : A) → Type
 Ω A a = a ≡ a 

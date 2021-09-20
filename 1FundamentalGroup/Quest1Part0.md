@@ -77,6 +77,10 @@ Try giving it '`loop n times`' composed with `loop`.
 Then try to also define the map on the negative integers.
 You will need to invert paths using `sym`.
 
+```agda
+sym : x ≡ y → y ≡ x
+```
+
 <p>
 <details>
 <summary>Looking up definitions</summary>
