@@ -5,6 +5,8 @@ Creating the inverse map is difficult without access to the entire circle.
 Similarly to how we used `doubleCover` to distinguish `refl` and `base`,
 the idea is to replace `Bool` with `ℤ`, 
 allowing us to distinguish between all loops on `S¹`.
+In `Part0` and `Part1` we will construct one of the two comparison maps
+across the whole circle, called `spinCount`.
 
 The plan is :
 
@@ -14,11 +16,21 @@ The plan is :
 3. Turn `sucℤ` into a path `sucPath : ℤ ≡ ℤ` using `isoToPath`
 4. Define `helix : S¹ → Type` by mapping `base` to `ℤ` and
    a generic point `loop i` to `sucPath i`.
+<<<<<<< HEAD
 5. Use `helix` and `endPt` to define the map `base ≡ x → helix x`
    on all `x : S¹`, in particular giving us `Ω S¹ base → ℤ`
    when applied to `base`.
 
 In this part, we focus on `1` and `2`.
+=======
+5. Use `helix` and `endPt` to define the map 
+   `spinCountBase : base ≡ base → ℤ`
+   Intuitively it counts how many times a path loops around `S¹`. 
+   a generic point `loop i` to `sucPath i`.
+6. Generalize this across the circle.
+
+In this part, we focus on `1`, `2` and `3`.
+>>>>>>> df5d7c381b1adae1d2547df95f5d73bcf3447ac4
 
 ## `sucℤ`
 
@@ -77,4 +89,13 @@ In this part, we focus on `1` and `2`.
 - Imitating what we did with `flipIso` and 
   give a point `sucℤIso : ℤ ≅ ℤ`
   by using `predℤ` as the inverse and proving
+<<<<<<< HEAD
   `section sucℤ predℤ` and `retract sucℤ predℤ`.
+=======
+  `section sucℤ predℤ` and `retract sucℤ predℤ`. 
+
+## `sucℤ` is a path
+
+- Imitating what we did with `flipPath`, 
+  upgrade `sucℤIso` to `sucℤPath`.
+>>>>>>> df5d7c381b1adae1d2547df95f5d73bcf3447ac4
