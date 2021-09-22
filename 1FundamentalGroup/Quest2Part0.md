@@ -5,6 +5,8 @@ Creating the inverse map is difficult without access to the entire circle.
 Similarly to how we used `doubleCover` to distinguish `refl` and `base`,
 the idea is to replace `Bool` with `ℤ`, 
 allowing us to distinguish between all loops on `S¹`.
+In `Part0` and `Part1` we will construct one of the two comparison maps
+across the whole circle, called `spinCount`.
 
 The plan is :
 

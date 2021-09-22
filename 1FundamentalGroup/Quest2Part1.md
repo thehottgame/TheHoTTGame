@@ -1,4 +1,4 @@
-# Comparison maps between `Ω S¹ base` and `ℤ`
+# Comparison maps between `Ω S¹ base` and `ℤ` - `spinCount`
 
 ## The `ℤ`-bundle `helix`
 
