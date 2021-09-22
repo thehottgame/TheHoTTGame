@@ -43,26 +43,29 @@ Try opening `Trinitarianism/Quest0.agda` in Emacs
 and do `Ctrl-c Ctrl-l`.
 Some text should be highlighted, and any `?` should turn into `{ }`.
 
-## How the game works
+## Where to start?
 
-Our Game is currently under development. 
-As of now you can try the _quests_ in the `Trinitarianism` folder.
-Each quest consists of three files, for example :
-- `Trinitarianism/Quest0.md` is the guide for the quest.
-  In there, you will find details of the tasks 
-  you must finish in order to complete the quest.
-  For now, it is recommended that
-  you view these online within github.
-- `Trinitarianism/Quest0.agda` is the agda file in which
-  you do the quest. 
-- `Trinitarianism/Quest0Solutions.agda` contains
-  solutions to the tasks in the quest.
+You can start with `0Trinitarianism` if you are interested in
+how logic, type theory and category theory come together 
+as different ways to view the same thing.
+If you are more interested in homotopy theory,
+try `1FundamentalGroup` where we show that the 
+fundamental group of `S¹` is `ℤ`.
 
-## Emacs and Agda usage
-We have a file with a list of [basic Emacs commands](
+## How to start?
+
+To start with `1FundamentalGroup` (for example),
+find the GitHub page [`1FundamentalGroup/Quest0Part0.md`](
+https://github.com/thehottgame/TheHoTTGame/blob/main/1FundamentalGroup/Quest0Part0.md
+)
+and follow the instructions there,
+then trying the following files in the same directory.
+Open up the corresponding `.agda` file in `emacs` to 
+follow along with the instructions in the quests.
+
+## Emacs issues
+
+If you can't figure out `emacs` or forget some command, then 
+try consulting our guide for [basic Emacs commands](
 https://github.com/thehottgame/TheHoTTGame/blob/main/EmacsCommands.md
-), 
-but you _should_ be able to learn how to use Agda as you go along.
-
-## Feedback
-If you have any feedback please contact the devs. 
+).
