@@ -31,8 +31,8 @@
 [] "just some terminology" - subject on the definition of _fiber_.
   Subject did not take in the picture of what it is called fiber.
 [-] need to add earlier how to check goal of holes.
-[] need to be clear _we are assuming `flipPath` is constructed already_.
-[] overall : need to be clearer that `Type` is space of spaces,
+[x] need to be clear _we are assuming `flipPath` is constructed already_.
+[x] overall : need to be clearer that `Type` is space of spaces,
   and paths in `Type` are saying which spaces are the same.
 
 ## Quesst0/Part2
