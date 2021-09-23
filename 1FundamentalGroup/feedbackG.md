@@ -25,12 +25,12 @@
   More specifically, need to say `a : A` means "`a` is a point of the space `A`".
 [x] we shld say `a ≡ b` means space of paths from `a` to `b`.
 [-] 'contradiction' is a pre-existing concept in subject brain.
-[] "not sure that helps" - subject about definition of `Bool`
-[] "is `flipPath` taking a point from `Bool` to another point of `Bool`
+[x] "not sure that helps" - subject about definition of `Bool`
+[x] "is `flipPath` taking a point from `Bool` to another point of `Bool`
   or is it taking a space to another space?"
 [] "just some terminology" - subject on the definition of _fiber_.
   Subject did not take in the picture of what it is called fiber.
-[] need to add earlier how to check goal of holes.
+[-] need to add earlier how to check goal of holes.
 [] need to be clear _we are assuming `flipPath` is constructed already_.
 [] overall : need to be clearer that `Type` is space of spaces,
   and paths in `Type` are saying which spaces are the same.
