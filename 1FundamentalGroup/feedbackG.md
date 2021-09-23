@@ -35,10 +35,10 @@
 [x] overall : need to be clearer that `Type` is space of spaces,
   and paths in `Type` are saying which spaces are the same.
 
-## Quesst0/Part2
+## Quest0/Part2
 
-[] For the `iso` bit, change to just `C-c C-r` cuz `Iso` only has one constructor.
-[] say you can check def of `Iso` by using `SPC c d`
-[] say "just write `s` and `r` and write the rest then load".
-[] emphasize agda is indentation sensitive.
-[] subject unexpectedly extracts lemma `true ≡ true`.
+[x] For the `iso` bit, change to just `C-c C-r` cuz `Iso` only has one constructor.
+[x] say you can check def of `Iso` by using `SPC c d`
+[x] say "just write `s` and `r` and write the rest then load".
+[x] emphasize agda is indentation sensitive.
+[x] subject unexpectedly extracts lemma `true ≡ true`.

@@ -18,14 +18,14 @@ Flip true = false
 -- notice we used `refl` instead of `λ i → false`,
 -- more on `refl` in Quest1
 flipIso : Bool ≅ Bool
-flipIso = iso Flip Flip s r where
-  s : section Flip Flip
-  s false = refl
-  s true = refl
+flipIso = iso Flip Flip rightInv leftInv where
+  rightInv : section Flip Flip
+  rightInv false = refl
+  rightInv true = refl
 
-  r : retract Flip Flip
-  r false = refl
-  r true = refl
+  leftInv : retract Flip Flip
+  leftInv false = refl
+  leftInv true = refl
 
 flipPath : Bool ≡ Bool
 flipPath = isoToPath flipIso
