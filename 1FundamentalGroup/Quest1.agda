@@ -1,13 +1,6 @@
 module 1FundamentalGroup.Quest1 where
 
-open import Cubical.Core.Everything
-open import Cubical.HITs.S1
-open import Cubical.Data.Nat
-open import Cubical.Data.Int
-open import Cubical.Data.Empty
-open import Cubical.Foundations.Prelude
-open import Cubical.Foundations.HLevels
-open import 1FundamentalGroup.Quest0Solutions using ( Refl ; Refl≢loop )
+open import 1FundamentalGroup.Preambles.P1
 
 Ω : (A : Type) (a : A) → Type
 Ω A a = a ≡ a 

@@ -1,12 +1,6 @@
 module 1FundamentalGroup.Quest2 where
 
-open import Cubical.Core.Everything
-open import Cubical.Data.Nat
-open import Cubical.Data.Int using (ℤ ; pos ; negsuc ; -_)
-open import Cubical.Foundations.Isomorphism
-open import Cubical.Foundations.Prelude renaming (subst to endPt)
-open import Cubical.HITs.S1 using (S¹ ; base ; loop)
-open import 1FundamentalGroup.Quest1
+open import 1FundamentalGroup.Preambles.P2
 
 sucℤ : ℤ → ℤ
 sucℤ (pos n) = pos (suc n)
@@ -41,7 +35,7 @@ helix base = ℤ
 helix (loop i) = sucℤPath i
 
 spinCountBase : base ≡ base → ℤ
-spinCountBase p = endPt helix p 0
+spinCountBase p = endPt helix p (pos zero)
 
 spinCount : (x : S¹) → base ≡ x → helix x
-spinCount x p = endPt helix p 0
+spinCount x p = endPt helix p (pos zero)
