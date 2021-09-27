@@ -1,7 +1,7 @@
--- ignore this
+-- ignore
 module 1FundamentalGroup.Quest0 where
--- ignore this
 open import 1FundamentalGroup.Preambles.P0
+
 
 Refl : base ≡ base
 Refl = {!!}

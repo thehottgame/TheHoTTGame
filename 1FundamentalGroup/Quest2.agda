@@ -1,5 +1,5 @@
+-- ignore
 module 1FundamentalGroup.Quest2 where
-
 open import 1FundamentalGroup.Preambles.P2
 
 sucℤ : ℤ → ℤ
