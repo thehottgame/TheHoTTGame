@@ -1,13 +1,10 @@
 module 1FundamentalGroup.Quest0SideQuests.EmptySolutions where
 
-open import Cubical.Foundations.Prelude
-open import Cubical.Data.Empty renaming (rec to ⊥Rec)
-open import Cubical.Foundations.Isomorphism renaming (Iso to _≅_)
+open import 1FundamentalGroup.Preambles.PEmpty
 
 toEmpty : (A : Type) → Type
 toEmpty A = A → ⊥
 
--- why Type₁
 pathEmpty : (A : Type) → Type₁
 pathEmpty A = A ≡ ⊥
 
@@ -27,4 +24,4 @@ isoEmpty→pathEmpty : (A : Type) → isoEmpty A → pathEmpty A
 isoEmpty→pathEmpty A = isoToPath
 
 pathEmpty→toEmpty : (A : Type) → pathEmpty A → toEmpty A
-pathEmpty→toEmpty A p = J (λ B q → toEmpty B) (λ x → x) (sym p)
+pathEmpty→toEmpty A p x = transport p x
