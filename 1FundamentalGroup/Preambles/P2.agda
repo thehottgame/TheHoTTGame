@@ -5,4 +5,4 @@ open import Cubical.Data.Int using (ℤ ; pos ; negsuc ; -_) public
 open import Cubical.Foundations.Isomorphism public
 open import Cubical.Foundations.Prelude renaming (subst to endPt) public
 open import Cubical.HITs.S1 using (S¹ ; base ; loop) public
-open import 1FundamentalGroup.Quest1 public
+open import 1FundamentalGroup.Quest1Solutions public

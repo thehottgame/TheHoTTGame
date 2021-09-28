@@ -1,12 +1,6 @@
+-- ignore
 module 1FundamentalGroup.Quest0Solutions where
-
-open import Cubical.Data.Empty
-open import Cubical.Data.Unit renaming ( Unit to ⊤ )
-open import Cubical.Data.Bool
-open import Cubical.Foundations.Prelude renaming ( subst to endPt )
-open import Cubical.Foundations.Isomorphism renaming ( Iso to _≅_ )
-open import Cubical.Foundations.Path
-open import Cubical.HITs.S1
+open import 1FundamentalGroup.Preambles.P0
 
 Refl : base ≡ base
 Refl = λ i → base
