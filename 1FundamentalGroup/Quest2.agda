@@ -21,8 +21,8 @@ The definition of sucℤPath goes here.
 helix : S¹ → Type
 helix = {!!}
 
-spinCountBase : base ≡ base → ℤ
-spinCountBase = ?
+windingNumberBase : base ≡ base → ℤ
+windingNumberBase = {!!}
 
-spinCount : (x : S¹) → base ≡ x → helix x
-spinCount = ?
+windingNumber : (x : S¹) → base ≡ x → helix x
+windingNumber = {!!}

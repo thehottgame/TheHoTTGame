@@ -34,8 +34,8 @@ helix : S¹ → Type
 helix base = ℤ
 helix (loop i) = sucℤPath i
 
-spinCountBase : base ≡ base → ℤ
-spinCountBase p = endPt helix p (pos zero)
+windingNumberBase : base ≡ base → ℤ
+windingNumberBase p = endPt helix p (pos zero)
 
-spinCount : (x : S¹) → base ≡ x → helix x
-spinCount x p = endPt helix p (pos zero)
+windingNumber : (x : S¹) → base ≡ x → helix x
+windingNumber x p = endPt helix p (pos zero)
