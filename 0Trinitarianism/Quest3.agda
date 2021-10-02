@@ -5,5 +5,7 @@ open import 0Trinitarianism.Preambles.P3
 _+_ : ℕ → ℕ → ℕ
 n + m = {!!}
 
-SumOfEven : (x : Σ ℕ isEven) → (y : Σ ℕ isEven) → isEven (x .fst + y .fst)
-SumOfEven x y = {!!}
+{-
+Write here you proof that the sum of
+even naturals is even.
+-}

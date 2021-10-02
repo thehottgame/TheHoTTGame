@@ -12,7 +12,7 @@ predℤ (pos zero) = negsuc zero
 predℤ (pos (suc n)) = pos n
 predℤ (negsuc n) = negsuc (suc n)
 
-sucℤIso : Iso ℤ ℤ
+sucℤIso : ℤ ≅ ℤ
 sucℤIso = iso sucℤ predℤ s r where
 
   s : section sucℤ predℤ
