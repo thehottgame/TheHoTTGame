@@ -9,8 +9,27 @@ open import 1FundamentalGroup.Preambles.P1
 loop_times : ℤ → Ω S¹ base
 loop n times = {!!}
 
-¬isSetS¹ : isSet S¹ → ⊥
-¬isSetS¹ = {!!}
+{-
+The definition of sucℤ goes here.
+-}
 
-¬isPropS¹ : isProp S¹ → ⊥
-¬isPropS¹ = {!!}
+{-
+The definition of predℤ goes here.
+-}
+
+{-
+The definition of sucℤIso goes here.
+-}
+
+{-
+The definition of sucℤPath goes here.
+-}
+
+helix : S¹ → Type
+helix = {!!}
+
+windingNumberBase : base ≡ base → ℤ
+windingNumberBase = {!!}
+
+windingNumber : (x : S¹) → base ≡ x → helix x
+windingNumber = {!!}
