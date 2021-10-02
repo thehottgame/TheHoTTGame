@@ -61,12 +61,12 @@ isoEmpty→pathEmpty : (A : Type) → isoEmpty A → pathEmpty A
 isoEmpty→pathEmpty A = isoToPath
 
 pathEmpty→toEmpty : (A : Type) → pathEmpty A → toEmpty A
-pathEmpty→toEmpty A p x = transport p x
+pathEmpty→toEmpty A p x = pathToFun p x
 
 ------------------- Side Quests - true≢false --------------------
 
 true≢false' : true ≡ false → ⊥
-true≢false' h = transport ⊤≡⊥ tt where
+true≢false' h = pathToFun ⊤≡⊥ tt where
 
   propify : Bool → Type
   propify false = ⊥
