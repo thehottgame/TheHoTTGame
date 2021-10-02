@@ -3,10 +3,10 @@ module 1FundamentalGroup.Quest1 where
 open import 1FundamentalGroup.Preambles.P1
 
 
-Ω : (A : Type) (a : A) → Type
-Ω A a = a ≡ a
+loopSpace : (A : Type) (a : A) → Type
+loopSpace A a = a ≡ a
 
-loop_times : ℤ → Ω S¹ base
+loop_times : ℤ → loopSpace S¹ base
 loop n times = {!!}
 
 {-
