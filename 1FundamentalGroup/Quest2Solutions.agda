@@ -51,11 +51,11 @@ sym∙ = J (λ y p → (sym p) ∙ p ≡ refl)
        ≡⟨ refl∙refl ⟩
          refl ∎)
 
-assoc : {A : Type} {w x : A} (p : w ≡ x) {y : A} (q : x ≡ y) {z : A} (r : y ≡ z)
+assoc : {A : Type} {w x : A} (p : w ≡ x) {y z : A} (q : x ≡ y) (r : y ≡ z)
         → (p ∙ q) ∙ r ≡ p ∙ (q ∙ r)
-assoc {A} {w} = J
+assoc {A} = J
         -- casing on p
-        (λ x p → {y : A} (q : x ≡ y) {z : A} (r : y ≡ z) → (p ∙ q) ∙ r ≡ p ∙ (q ∙ r))
+        (λ x p → {y z : A} (q : x ≡ y) (r : y ≡ z) → (p ∙ q) ∙ r ≡ p ∙ (q ∙ r))
         -- reduce to showing when p = refl
         λ q r →  (refl ∙ q) ∙ r
                  ≡⟨ cong (λ p' → p' ∙ r) (refl∙ q) ⟩

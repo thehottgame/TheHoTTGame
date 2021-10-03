@@ -2,27 +2,46 @@
 module 1FundamentalGroup.Quest2 where
 open import 1FundamentalGroup.Preambles.P2
 
-{-
-The definition of sucℤ goes here.
--}
+data _⊔_ (A B : Type) : Type where
 
-{-
-The definition of predℤ goes here.
--}
+     inl : A → A ⊔ B
+     inr : B → A ⊔ B
 
-{-
-The definition of sucℤIso goes here.
--}
+ℤ≡ℕ⊔ℕ : ℤ ≡ ℕ ⊔ ℕ
+ℤ≡ℕ⊔ℕ = {!!}
 
-{-
-The definition of sucℤPath goes here.
--}
+∙refl : {A : Type} {x y : A} (p : x ≡ y) → p ∙ refl ≡ p
+∙refl = {!!}
 
-helix : S¹ → Type
-helix = {!!}
+refl∙ : {A : Type} {x y : A} (p : x ≡ y) → refl ∙ p ≡ p
+refl∙ = {!!}
 
-windingNumberBase : base ≡ base → ℤ
-windingNumberBase = {!!}
+∙sym : {A : Type} {x y : A} (p : x ≡ y) → p ∙ sym p ≡ refl
+∙sym = J (λ y p → p ∙ sym p ≡ refl)
+       (
+         refl ∙ sym refl
+       ≡⟨ cong (λ p → refl ∙ p) symRefl ⟩
+         refl ∙ refl
+       ≡⟨ refl∙refl ⟩
+         refl ∎)
 
-windingNumber : (x : S¹) → base ≡ x → helix x
-windingNumber = {!!}
+sym∙ : {A : Type} {x y : A} (p : x ≡ y) → (sym p) ∙ p ≡ refl
+sym∙ = J (λ y p → (sym p) ∙ p ≡ refl)
+       (
+         (sym refl) ∙ refl
+       ≡⟨ cong (λ p → p ∙ refl) symRefl ⟩
+         refl ∙ refl
+       ≡⟨ refl∙refl ⟩
+         refl ∎)
+
+assoc : {A : Type} {w x : A} (p : w ≡ x) {y z : A} (q : x ≡ y) (r : y ≡ z)
+        → (p ∙ q) ∙ r ≡ p ∙ (q ∙ r)
+assoc {A} = J
+        -- casing on p
+        (λ x p → {y z : A} (q : x ≡ y) (r : y ≡ z) → (p ∙ q) ∙ r ≡ p ∙ (q ∙ r))
+        -- reduce to showing when p = refl
+        λ q r →  (refl ∙ q) ∙ r
+                 ≡⟨ cong (λ p' → p' ∙ r) (refl∙ q) ⟩
+                  q ∙ r
+                 ≡⟨ sym (refl∙ (q ∙ r)) ⟩
+                  refl ∙ q ∙ r ∎
