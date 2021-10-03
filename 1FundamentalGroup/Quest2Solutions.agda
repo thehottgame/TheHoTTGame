@@ -2,40 +2,63 @@
 module 1FundamentalGroup.Quest2Solutions where
 open import 1FundamentalGroup.Preambles.P2
 
--- sucℤ : ℤ → ℤ
--- sucℤ (pos n) = pos (suc n)
--- sucℤ (negsuc zero) = pos zero
--- sucℤ (negsuc (suc n)) = negsuc n
 
--- predℤ : ℤ → ℤ
--- predℤ (pos zero) = negsuc zero
--- predℤ (pos (suc n)) = pos n
--- predℤ (negsuc n) = negsuc (suc n)
+data _⊔_ (A B : Type) : Type where
 
--- sucℤIso : ℤ ≅ ℤ
--- sucℤIso = iso sucℤ predℤ s r where
+     inl : A → A ⊔ B
+     inr : B → A ⊔ B
 
---   s : section sucℤ predℤ
---   s (pos zero) = refl
---   s (pos (suc n)) = refl
---   s (negsuc zero) = refl
---   s (negsuc (suc n)) = refl
+ℤ≡ℕ⊔ℕ : ℤ ≡ ℕ ⊔ ℕ
+ℤ≡ℕ⊔ℕ = isoToPath (iso fun inv rightInv leftInv) where
 
---   r : retract sucℤ predℤ
---   r (pos zero) = refl
---   r (pos (suc n)) = refl
---   r (negsuc zero) = refl
---   r (negsuc (suc n)) = refl
+  fun : ℤ → ℕ ⊔ ℕ
+  fun (pos n) = inl n
+  fun (negsuc n) = inr n
 
--- sucℤPath : ℤ ≡ ℤ
--- sucℤPath = isoToPath sucℤIso
+  inv : ℕ ⊔ ℕ → ℤ
+  inv (inl n) = pos n
+  inv (inr n) = negsuc n
 
--- helix : S¹ → Type
--- helix base = ℤ
--- helix (loop i) = sucℤPath i
+  rightInv : section fun inv
+  rightInv (inl n) = refl
+  rightInv (inr n) = refl
 
--- windingNumberBase : base ≡ base → ℤ
--- windingNumberBase p = endPt helix p (pos zero)
+  leftInv : retract fun inv
+  leftInv (pos n) = refl
+  leftInv (negsuc n) = refl
 
--- windingNumber : (x : S¹) → base ≡ x → helix x
--- windingNumber x p = endPt helix p (pos zero)
+∙refl : {A : Type} {x y : A} (p : x ≡ y) → p ∙ refl ≡ p
+∙refl = J (λ y p → p ∙ refl ≡ p) refl∙refl
+
+refl∙ : {A : Type} {x y : A} (p : x ≡ y) → refl ∙ p ≡ p
+refl∙ = J (λ y p → refl ∙ p ≡ p) refl∙refl
+
+∙sym : {A : Type} {x y : A} (p : x ≡ y) → p ∙ sym p ≡ refl
+∙sym = J (λ y p → p ∙ sym p ≡ refl)
+       (
+         refl ∙ sym refl
+       ≡⟨ cong (λ p → refl ∙ p) symRefl ⟩
+         refl ∙ refl
+       ≡⟨ refl∙refl ⟩
+         refl ∎)
+
+sym∙ : {A : Type} {x y : A} (p : x ≡ y) → (sym p) ∙ p ≡ refl
+sym∙ = J (λ y p → (sym p) ∙ p ≡ refl)
+       (
+         (sym refl) ∙ refl
+       ≡⟨ cong (λ p → p ∙ refl) symRefl ⟩
+         refl ∙ refl
+       ≡⟨ refl∙refl ⟩
+         refl ∎)
+
+assoc : {A : Type} {w x : A} (p : w ≡ x) {y : A} (q : x ≡ y) {z : A} (r : y ≡ z)
+        → (p ∙ q) ∙ r ≡ p ∙ (q ∙ r)
+assoc {A} {w} = J
+        -- casing on p
+        (λ x p → {y : A} (q : x ≡ y) {z : A} (r : y ≡ z) → (p ∙ q) ∙ r ≡ p ∙ (q ∙ r))
+        -- reduce to showing when p = refl
+        λ q r →  (refl ∙ q) ∙ r
+                 ≡⟨ cong (λ p' → p' ∙ r) (refl∙ q) ⟩
+                  q ∙ r
+                 ≡⟨ sym (refl∙ (q ∙ r)) ⟩
+                  refl ∙ q ∙ r ∎
