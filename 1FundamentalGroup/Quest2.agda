@@ -33,7 +33,7 @@ Your definition of ⊔NoConfusion goes here.
 
 Your definition of Path≡⊔NoConfusion goes here.
 
-Your definition of isProp⊔NoConfusion goes here.
+Your definition of isSet⊔NoConfusion goes here.
 
 Your definition of isSet⊔ goes here.
 
