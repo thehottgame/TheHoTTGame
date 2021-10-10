@@ -2,6 +2,10 @@
 module 1FundamentalGroup.Quest2 where
 open import 1FundamentalGroup.Preambles.P2
 
+
+
+
+
 data _⊔_ (A B : Type) : Type where
 
      inl : A → A ⊔ B

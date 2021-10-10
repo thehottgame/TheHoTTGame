@@ -2,6 +2,15 @@
 module 1FundamentalGroup.Quest2Solutions where
 open import 1FundamentalGroup.Preambles.P2
 
+isSet→LoopSpace≡⊤ : {A : Type} (x : A) → isSet A → (x ≡ x) ≡ ⊤
+isSet→LoopSpace≡⊤ x h = isoToPath (iso (λ p → tt) inv rightInv (λ p → h x x refl p)) where
+
+  inv : ⊤ → x ≡ x
+  inv tt = refl
+
+  rightInv : section (λ p → tt) inv
+  rightInv tt = refl
+
 
 data _⊔_ (A B : Type) : Type where
 
@@ -90,22 +99,12 @@ isSet⊔NoConfusion hA hB (inr x) (inr y) = hB x y
 ⊔NoConfusionSelf (inl x) = refl
 ⊔NoConfusionSelf (inr x) = refl
 
-Path≅⊔NoConfusion' : (x y : A ⊔ B) → (x ≡ y) ≅ ⊔NoConfusion x y
-Path≅⊔NoConfusion' x y = iso (fun _ _) ({!!}) ({!!}) ({!!}) where
+disjoint : (x : A) (y : B) → inl x ≡ inr y → ⊥
+disjoint x y p = endPt bundle p tt where
 
-  -- if you case on x and y you would have to show that inl and inr are injective
-  -- J avoids this, but leads to needing J and JRefl for showing section and retract
-  fun : (x y : A ⊔ B) → (x ≡ y) → ⊔NoConfusion x y
-  fun x y = J (λ y₂ x₂ → ⊔NoConfusion x y₂) (⊔NoConfusionSelf x)
-
-  inv : (x y : A ⊔ B) → ⊔NoConfusion x y → x ≡ y
-  inv (inl x) (inl y) p = cong inl p
-  inv (inr x) (inr y) p = cong inr p
-
-  rightInv : (x y : A ⊔ B) → section (fun x y) (inv x y)
-  rightInv {A} {B} (inl x) (inl x₁) = J ((λ y' p → fun {A} {B} (inl x) (inl y') (inv (inl x) (inl y') p) ≡ p)) {!!}
-  rightInv {A} {B} (inl x) (inr x₁) = {!!}
-  rightInv {A} {B} (inr x) y = {!!}
+  bundle : A ⊔ B → Type
+  bundle (inl x) = ⊤
+  bundle (inr x) = ⊥
 
 Path≅⊔NoConfusion : (x y : A ⊔ B) → (x ≡ y) ≅ ⊔NoConfusion x y
 Path≅⊔NoConfusion x y = iso (fun _ _) (inv _ _) (rightInv _ _) (leftInv _ _) where
