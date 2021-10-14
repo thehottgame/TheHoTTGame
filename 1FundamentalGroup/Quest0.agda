@@ -2,7 +2,6 @@
 module 1FundamentalGroup.Quest0 where
 open import 1FundamentalGroup.Preambles.P0
 
-
 Refl : base ≡ base
 Refl = {!!}
 
