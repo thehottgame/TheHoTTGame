@@ -28,7 +28,7 @@ doubleCover : S¹ → Type
 doubleCover base = Bool
 doubleCover (loop i) = flipPath i
 
-endPtOfTrue : (p : base ≡ base) → doubleCover base
+endPtOfTrue : base ≡ base → doubleCover base
 endPtOfTrue p = endPt doubleCover p true
 
 Refl≢loop : Refl ≡ loop → ⊥

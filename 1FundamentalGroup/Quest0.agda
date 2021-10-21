@@ -17,7 +17,7 @@ flipPath = {!!}
 doubleCover : S¹ → Type
 doubleCover x = {!!}
 
-endPtOfTrue : (p : base ≡ base) → doubleCover base
+endPtOfTrue : base ≡ base → doubleCover base
 endPtOfTrue p = {!!}
 
 Refl≢loop : Refl ≡ loop → ⊥
