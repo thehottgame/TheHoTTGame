@@ -12,7 +12,7 @@ private
     u : Level
 
 
-data Id {A : Type u} : (x y : A) → Type u where
+data Id {A : Type} : (x y : A) → Type where
 
   rfl : {x : A} → Id x x
 
@@ -30,26 +30,6 @@ p *0 rfl = p
 
 _*1_ : {A : Type} {x y z : A} → Id x y → Id y z → Id x z
 rfl *1 rfl = rfl
-
-data _×_ (A B : Type) : Type where
-
-  _,_ : A → B → A × B
-
--- id× : {A B : Type} (a0 a1 : A) (b0 b1 : B) →
---   (Id a0 a1 × Id b0 b1) ≅ Id {A × B} ( a0 , b0 ) ( a1 , b1 )
--- id× {A} {B} a0 a1 b0 b1 = iso fun inv rightInv leftInv where
-
---   fun : Id a0 a1 × Id b0 b1 → Id {A × B} ( a0 , b0 ) ( a1 , b1 )
---   fun (rfl , rfl) = rfl
-
---   inv : Id {A × B} ( a0 , b0 ) ( a1 , b1 ) → Id a0 a1 × Id b0 b1
---   inv rfl = rfl , rfl
-
---   rightInv : section fun inv
---   rightInv rfl = refl
-
---   leftInv : retract fun inv
---   leftInv (rfl , rfl) = refl
 
 ------------Cong-------------------------
 
@@ -78,8 +58,6 @@ Assoc rfl q r = rfl
 
 
 -------------Mapping Out----------------
-
-thing = JRefl
 
 outOfId : (M : (y : A) → Id x y → Type) → M x rfl
   → {y : A} (p : Id x y) → M y p
@@ -117,17 +95,6 @@ Path≡Id {A} {x} {y} = isoToPath (iso Path→Id Id→Path rightInv leftInv) whe
 
   leftInv : retract (Path→Id {A} {x} {y}) Id→Path
   leftInv = J (λ y p → Id→Path (Path→Id p) ≡ p) (cong (λ p → Id→Path p) Path→IdRefl)
-
-
-  -- leftInv : retract (Path→Id {A} {x} {y}) Id→Path
-  -- leftInv = J (λ y p → Id→Path (Path→Id p) ≡ p)
-  --   (
-  --     Id→Path (Path→Id refl)
-  --   ≡⟨ cong (λ p → Id→Path p) Path→IdRefl ⟩
-  --     Id→Path rfl
-  --   ≡⟨ refl ⟩
-  --     refl ∎
-  --   )
 
 -----------Basics about Path Space-----------------
 
@@ -193,3 +160,123 @@ assoc {A} = J
                   (q ∙ r)
                  ≡⟨ sym (refl∙ (q ∙ r)) ⟩
                   (refl ∙ (q ∙ r)) ∎
+
+------------------Transport---------------------
+
+id : A → A
+id x = x
+
+pathToFun : A ≡ B → A → B
+pathToFun {A} = J (λ B p → (A → B)) id
+
+pathToFunRefl : pathToFun (refl {x = A}) ≡ id
+pathToFunRefl {A} = JRefl (λ B p → (A → B)) id
+
+pathToFunReflx : pathToFun (refl {x = A}) x ≡ x
+pathToFunReflx {x = x} = cong (λ f → f x) pathToFunRefl
+
+endPt : (B : A → Type) (p : x ≡ y) → B x → B y
+endPt {x = x} B = J (λ y p → B x → B y) id
+
+endPtRefl : (B : A → Type) → endPt B (refl {x = x}) ≡ id
+endPtRefl {x = x} B = JRefl ((λ y p → B x → B y)) id
+
+endPt' : (B : A → Type) (p : x ≡ y) → B x → B y
+endPt' B p = pathToFun (Cubical.Foundations.Prelude.cong B p )
+
+
+--------------funExt---------------------
+
+
+
+--------------Path on Products-----------
+
+data _×_ (A B : Type) : Type where
+
+  _,_ : A → B → A × B
+
+Id× : {A B : Type} (a0 a1 : A) (b0 b1 : B)
+  → (Id {A × B} ( a0 , b0 ) ( a1 , b1 )) ≡ (Id a0 a1 × Id b0 b1)
+Id× {A} {B} a0 a1 b0 b1 = isoToPath (iso fun inv rightInv leftInv) where
+
+  fun : Id {A = A × B} ( a0 , b0 ) ( a1 , b1 ) → Id a0 a1 × Id b0 b1
+  fun rfl = rfl , rfl
+
+  inv : Id a0 a1 × Id b0 b1 → Id {A = A × B} ( a0 , b0 ) ( a1 , b1 )
+  inv (rfl , rfl) = rfl
+
+  rightInv : section fun inv
+  rightInv (rfl , rfl) = refl
+
+  leftInv : retract fun inv
+  leftInv rfl = refl
+
+fst : A × B → A
+fst (a , b) = a
+
+snd : A × B → B
+snd (a , b) = b
+
+Path× : {A B : Type} (x y : A × B) → (x ≡ y) ≡ ((fst x ≡ fst y) × (snd x ≡ snd y))
+Path× {A} {B} (a0 , b0) (a1 , b1) = isoToPath (iso fun (inv a0 a1 b0 b1) rightInv leftinv) where
+
+  fun : {x y : A × B} → x ≡ y → (fst x ≡ fst y) × (snd x ≡ snd y)
+  fun {x} {y} = J (λ y p → (fst x ≡ fst y) × (snd x ≡ snd y)) (refl , refl)
+
+  funRefl : (x : A × B) → fun (refl {x = x}) ≡ ( refl , refl )
+  funRefl x = JRefl {_} {A × B} {x}
+    ((λ y p → (fst x ≡ fst y) × (snd x ≡ snd y))) ( refl , refl )
+
+  inv : (a0 a1 : A) (b0 b1 : B) → (a0 ≡ a1) × (b0 ≡ b1)
+    → _≡_ {A = A × B} ( a0 , b0 ) ( a1 , b1 )
+  inv a0 a1 b0 b1 (p , q) =
+    J -- first induct on p
+    (λ y p → _≡_ {A = A × B} ( a0 , b0 ) ( y , b1 ))
+    (
+      J -- then induct on q
+      (λ y q → _≡_ {A = A × B} ( a0 , b0 ) ( a0 , y ))
+      refl
+      q
+    ) p
+
+  invRefl : (a : A) (b : B) → inv a a b b (refl , refl) ≡ refl
+  invRefl a b =
+      inv a a b b (refl , refl)
+    ≡⟨ JRefl (λ y p → (a , b) ≡  (y , b)) (J (λ y q → (a , b) ≡ (a , y)) refl refl) ⟩
+      J (λ y q → _≡_ {A = A × B} ( a , b ) ( a , y )) refl refl
+    ≡⟨ JRefl ((λ y q → _≡_ {A = A × B} ( a , b ) ( a , y ))) refl ⟩
+      refl ∎
+
+  Inv : (x y : A × B) → (fst x ≡ fst y) × (snd x ≡ snd y) → x ≡ y
+  Inv (a0 , b0) (a1 , b1) = inv a0 a1 b0 b1
+
+  InvRefl : {x : A × B} → Inv x x (refl , refl) ≡ refl {x = x}
+  InvRefl {a , b} = invRefl a b
+
+  rightInv : section fun (inv a0 a1 b0 b1)
+  rightInv (p , q) =
+    J -- first induct on p
+    (λ y p → fun (inv a0 y b0 b1 (p , q)) ≡ (p , q))
+    (
+      J -- then induct on q
+      (λ y q → fun (inv a0 a0 b0 y (refl , q)) ≡ (refl , q))
+      (
+          fun (inv a0 a0 b0 b0 (refl , refl))
+        ≡⟨ cong fun (invRefl a0 b0) ⟩
+          fun (refl {x = (a0 , b0)})
+        ≡⟨ funRefl (a0 , b0) ⟩
+          (refl , refl) ∎)
+      q)
+    p
+
+  leftInv : {x y : A × B} → retract fun (Inv x y)
+  leftInv {x} = J (λ y p → Inv x y (fun p) ≡ p)
+    (
+      Inv x x (fun {x = x} refl)
+    ≡⟨ cong (Inv x x) (funRefl x) ⟩
+    Inv x x (refl , refl)
+    ≡⟨ InvRefl ⟩
+      refl ∎)
+
+  leftinv : {x y : A × B} → retract fun (inv (fst x) (fst y) (snd x) (snd y))
+  leftinv {a0 , b0} {a1 , b1} = leftInv
