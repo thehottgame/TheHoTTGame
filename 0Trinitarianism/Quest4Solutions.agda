@@ -187,7 +187,21 @@ endPt' B p = pathToFun (Cubical.Foundations.Prelude.cong B p )
 
 --------------funExt---------------------
 
+funExt : (B : A → Type) (f g : (a : A) → B a) →
+  ((a : A) → f a ≡ g a) → f ≡ g
+funExt B f g h = λ i a → h a i
 
+funExtPath : (B : A → Type) (f g : (a : A) → B a) → (f ≡ g) ≡ ((a : A) → f a ≡ g a)
+funExtPath {A} B f g = isoToPath (iso fun (funExt B f g) rightInv leftInv) where
+
+  fun : f ≡ g → (a : A) → f a ≡ g a
+  fun h = λ a i → h i a
+
+  rightInv : section fun (funExt B f g)
+  rightInv h = refl
+
+  leftInv : retract fun (funExt B f g)
+  leftInv h = refl
 
 --------------Path on Products-----------
 
@@ -218,7 +232,8 @@ snd : A × B → B
 snd (a , b) = b
 
 Path× : {A B : Type} (x y : A × B) → (x ≡ y) ≡ ((fst x ≡ fst y) × (snd x ≡ snd y))
-Path× {A} {B} (a0 , b0) (a1 , b1) = isoToPath (iso fun (inv a0 a1 b0 b1) rightInv leftinv) where
+Path× {A} {B} (a0 , b0) (a1 , b1) =
+  isoToPath (iso fun (inv a0 a1 b0 b1) rightInv leftInv) where
 
   fun : {x y : A × B} → x ≡ y → (fst x ≡ fst y) × (snd x ≡ snd y)
   fun {x} {y} = J (λ y p → (fst x ≡ fst y) × (snd x ≡ snd y)) (refl , refl)
@@ -278,5 +293,5 @@ Path× {A} {B} (a0 , b0) (a1 , b1) = isoToPath (iso fun (inv a0 a1 b0 b1) rightI
     ≡⟨ InvRefl ⟩
       refl ∎)
 
-  leftinv : {x y : A × B} → retract fun (inv (fst x) (fst y) (snd x) (snd y))
-  leftinv {a0 , b0} {a1 , b1} = leftInv
+  leftinv : (x y : A × B) → retract fun (inv (fst x) (fst y) (snd x) (snd y))
+  leftinv (a0 , b0) (a1 , b1) = leftInv
