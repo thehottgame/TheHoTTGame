@@ -1,6 +1,6 @@
 module 0Trinitarianism.Quest4Solutions where
 
-open import Cubical.Foundations.Prelude using ( Level ; Type ; _≡_ ; J ; JRefl ; refl )
+open import Cubical.Foundations.Prelude using ( Level ; Type ; _≡_ ; J ; JRefl ; refl ; i1 ; i0 ; I)
 open import Cubical.Foundations.Isomorphism renaming (Iso to _≅_)
 
 infixr 30 _∙_
@@ -183,7 +183,6 @@ endPtRefl {x = x} B = JRefl ((λ y p → B x → B y)) id
 
 endPt' : (B : A → Type) (p : x ≡ y) → B x → B y
 endPt' B p = pathToFun (Cubical.Foundations.Prelude.cong B p )
-
 
 --------------funExt---------------------
 
