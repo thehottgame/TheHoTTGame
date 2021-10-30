@@ -1,11 +1,6 @@
 module 0Trinitarianism.Quest4Solutions where
 
-open import Cubical.Foundations.Prelude using ( Level ; Type ; _≡_ ; J ; JRefl ; refl ; i1 ; i0 ; I)
-open import Cubical.Foundations.Isomorphism renaming (Iso to _≅_)
-
-infixr 30 _∙_
-infix  3 _∎
-infixr 2 _≡⟨_⟩_
+open import 0Trinitarianism.Preambles.P4
 
 private
   variable
@@ -76,11 +71,11 @@ Id→Path rfl = refl
 Cong : (f : A → B) → Id x y → Id (f x) (f y)
 Cong f rfl = rfl
 
-cong : (f : A → B) (p : x ≡ y) → f x ≡ f y
-cong {x = x} f = J (λ y p → f x ≡ f y) refl
-
 cong' : (f : A → B) (p : x ≡ y) → f x ≡ f y
-cong' f p = Id→Path (Cong f (Path→Id p))
+cong' {x = x} f = J (λ y p → f x ≡ f y) refl
+
+cong'' : (f : A → B) (p : x ≡ y) → f x ≡ f y
+cong'' f p = Id→Path (Cong f (Path→Id p))
 
 ------------Path vs Id---------------------
 
@@ -114,6 +109,10 @@ _ ≡⟨ x≡y ⟩ y≡z = x≡y ∙ y≡z
 
 _∎ : (x : A) → x ≡ x
 _ ∎ = refl
+
+infixr 30 _∙_
+infix  3 _∎
+infixr 2 _≡⟨_⟩_
 
 TransRefl : {x y : A} → Trans {A} {x} {x} {y} refl ≡ λ q → q
 TransRefl {x = x} {y = y} = JRefl ((λ y1 p → y1 ≡ y → x ≡ y)) λ q → q
@@ -182,7 +181,7 @@ endPtRefl : (B : A → Type) → endPt B (refl {x = x}) ≡ id
 endPtRefl {x = x} B = JRefl ((λ y p → B x → B y)) id
 
 endPt' : (B : A → Type) (p : x ≡ y) → B x → B y
-endPt' B p = pathToFun (Cubical.Foundations.Prelude.cong B p )
+endPt' B p = pathToFun (cong B p )
 
 --------------funExt---------------------
 
