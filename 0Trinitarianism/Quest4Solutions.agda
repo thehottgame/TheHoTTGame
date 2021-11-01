@@ -104,10 +104,10 @@ Trans {x = x} {z = z} = J (λ y1 p → y1 ≡ z → x ≡ z) λ q → q
 
 _∙_ = Trans -- input \.
 
-_≡⟨_⟩_ : (x : A) → x ≡ y → y ≡ z → x ≡ z
+_≡⟨_⟩_ : (x : A) → x ≡ y → y ≡ z → x ≡ z -- input \< and \>
 _ ≡⟨ x≡y ⟩ y≡z = x≡y ∙ y≡z
 
-_∎ : (x : A) → x ≡ x
+_∎ : (x : A) → x ≡ x -- input \qed
 _ ∎ = refl
 
 infixr 30 _∙_
