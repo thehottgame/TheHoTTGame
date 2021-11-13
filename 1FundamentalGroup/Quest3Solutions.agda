@@ -1,25 +1,6 @@
 module 1FundamentalGroup.Quest3Solutions where
 
-open import Cubical.HITs.S1 using ( S¹ ; base ; loop )
-open import 1FundamentalGroup.Quest1Solutions
-open import Cubical.Foundations.Prelude
-  renaming (transport to pathToFun ; transportRefl to pathToFunRefl)
-open import Cubical.Foundations.GroupoidLaws
-  renaming (lCancel to sym∙ ; rCancel to ∙sym ; lUnit to Refl∙ ; rUnit to ∙Refl)
-open import Cubical.Foundations.Path
-open import 0Trinitarianism.Quest5Solutions
-open import Cubical.Data.Int using (ℤ)
-open import Cubical.Data.Nat
-
-pathToFun→ : {A0 A1 B0 B1 : Type} (A : A0 ≡ A1) (B : B0 ≡ B1) (f : A0 → B0) →
-  pathToFun (λ i → A i → B i) f ≡ λ a1 → pathToFun B (f (pathToFun (sym A) a1))
-pathToFun→ A B f =
-  J (λ A1 A → pathToFun (λ i → A i → B i) f ≡ λ a1 → pathToFun B (f (pathToFun (sym A) a1)))
-  refl A
-
-
-
-open ℤ
+open import 1FundamentalGroup.Preambles.P3
 
 loopSucℤtimes : (n : ℤ) → loop n times ∙ loop ≡ loop sucℤ n times
 loopSucℤtimes (pos n) = refl
@@ -49,11 +30,16 @@ pathToFunPathFibration {A} {x} {y} q = J (λ z p → pathToFun (λ i → x ≡ p
     q ∙ refl ∎
   )
 
+pathToFun→ : {A0 A1 B0 B1 : Type} (A : A0 ≡ A1) (B : B0 ≡ B1) (f : A0 → B0) →
+  pathToFun (λ i → A i → B i) f ≡ λ a1 → pathToFun B (f (pathToFun (sym A) a1))
+pathToFun→ A B f = refl
+
+
 rewind : (x : S¹) → helix x → base ≡ x
 rewind = outOfS¹D (λ x → helix x → base ≡ x) loop_times
   (
     pathToFun (λ i → sucℤPath i → base ≡ loop i) loop_times
-  ≡⟨ pathToFun→ sucℤPath (λ i → base ≡ loop i) loop_times ⟩ -- how pathToFun interacts with →
+  ≡⟨ refl ⟩ -- how pathToFun interacts with →
     (λ n → pathToFun (λ i → base ≡ loop i) (loop_times (pathToFun (sym sucℤPath) n)))
   ≡⟨ refl ⟩ -- sucℤPath is just taking successor, and so its inverse is definitionally taking predecessor
     (λ n → pathToFun (λ i → base ≡ loop i) (loop_times (predℤ n)))
@@ -68,4 +54,59 @@ rewind = outOfS¹D (λ x → helix x → base ≡ x) loop_times
     loop_times ∎
   )
 
+windingNumberRewindBase : (n : ℤ) → windingNumber base (rewind base n) ≡ n
+windingNumberRewindBase (pos zero) = refl
+windingNumberRewindBase (pos (suc n)) =
+    windingNumber base (rewind base (pos (suc n)))
+  ≡⟨ refl ⟩
+    windingNumber base (loop (pos n) times ∙ loop)
+  ≡⟨ refl ⟩
+    endPt helix (loop (pos n) times ∙ loop) (pos zero)
+  ≡⟨ refl ⟩
+    sucℤ (endPt helix (loop (pos n) times) (pos zero))
+  ≡⟨ cong sucℤ (windingNumberRewindBase (pos n)) ⟩
+    sucℤ (pos n)
+  ≡⟨ refl ⟩
+    pos (suc n) ∎
+windingNumberRewindBase (negsuc zero) = refl
+windingNumberRewindBase (negsuc (suc n)) = cong predℤ (windingNumberRewindBase (negsuc n))
 
+-----------------------------------
+  --   windingNumber base (rewind base n)
+  -- ≡⟨ refl ⟩
+  --   windingNumber base (loop n times)
+  -- ≡⟨ refl ⟩
+  --   endPt helix (loop n times) (pos zero)
+  -- ≡⟨ {!!} ⟩
+  --   n ∎
+-------------------------------------
+
+windingNumberRewind : (x : S¹) (n : helix x) → windingNumber x (rewind x n) ≡ n
+windingNumberRewind = -- must case on x / use recursor / outOfS¹ since that is def of rewind
+  outOfS¹D (λ x → (n : helix x) → windingNumber x (rewind x n) ≡ n)
+    windingNumberRewindBase (
+      pathToFun
+        (λ i → (n : helix (loop i)) → windingNumber (loop i) (rewind (loop i) n) ≡ n)
+        windingNumberRewindBase
+    ≡⟨ funExt (λ x → isSetℤ _ _ _ _ ) ⟩ -- they are just functions so use funExt.
+                                         -- two equalities in ℤ so must be equal by isSetℤ
+      windingNumberRewindBase ∎)
+
+-- must case on p / use recursor / J since that is def of windingNumber / endPt
+-- actually endPt and J are both just transport in cubical agda.
+rewindWindingNumber : (x : S¹) (p : base ≡ x) → rewind x (windingNumber x p) ≡ p
+rewindWindingNumber x = J (λ x p → rewind x (windingNumber x p) ≡ p)
+     (rewind base (windingNumber base refl)
+   ≡⟨ refl ⟩
+     loop_times (endPt helix (refl {x = base}) (pos zero)) -- reduce both definitions
+   ≡⟨ cong loop_times (cong (λ g → g (pos zero)) (endPtRefl {x = base} helix)) ⟩
+     loop (pos zero) times
+   ≡⟨ refl ⟩
+     refl ∎)
+
+pathFibration≡helix : (x : S¹) → (base ≡ x) ≡ helix x
+pathFibration≡helix x =
+  isoToPath (iso (windingNumber x) (rewind x) (windingNumberRewind x) (rewindWindingNumber x))
+
+loopSpaceS¹≡ℤ : loopSpace S¹ base ≡ ℤ
+loopSpaceS¹≡ℤ = pathFibration≡helix base

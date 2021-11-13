@@ -12,11 +12,11 @@ PathD A x y = pathToFun A x ≡ y
 
 syntax PathD A x y = x ≡ y along A
 
-outOfS¹P : (B : S¹ → Type) → (b : B base) → PathP (λ i → B (loop i)) b b → (x : S¹) → B x
+outOfS¹P : (B : S¹ → Type) (b : B base) → PathP (λ i → B (loop i)) b b → (x : S¹) → B x
 outOfS¹P B b p base = b
 outOfS¹P B b p (loop i) = p i
 
-outOfS¹D : (B : S¹ → Type) → (b : B base) → b ≡ b along (λ i → B (loop i)) → (x : S¹) → B x
+outOfS¹D : (B : S¹ → Type) (b : B base) → b ≡ b along (λ i → B (loop i)) → (x : S¹) → B x
 outOfS¹D B b p x = outOfS¹P B b (_≅_.inv (PathPIsoPathD (λ i → B (loop i)) b b) p) x
 
 example : (x : S¹) → doubleCover x → doubleCover x
@@ -38,3 +38,7 @@ example' = outOfS¹D (λ x → doubleCover x → doubleCover x) Flip (funExt lem
   lem : (x : Bool) → pathToFun (λ i → flipPath i → flipPath i) Flip x ≡ Flip x
   lem false = refl
   lem true = refl
+
+outOfS¹DBase : (B : S¹ → Type) (b : B base)
+  (p : b ≡ b along (λ i → B (loop i)))→ outOfS¹D B b p base ≡ b
+outOfS¹DBase B b p = refl
