@@ -19,68 +19,6 @@ pathToFun→ A B f =
 
 
 
-{-
-
-private
-  variable
-    ℓ : Level
-
-transport→ : {A B : I → Type ℓ} (f : A i0 → B i0) (x : A i0) →
-  transport (λ i → A i → B i) f (transport (λ i → A i) x) ≡ transport (λ i → B i) (f x)
-transport→ {A = A} {B = B} f x =
-  J
-  (λ A1 A →
-    transport (λ i → A i → B i) f (transport (λ i → A i) x) ≡ transport (λ i → B i) (f x))
-  (J
-    (λ B1 B →
-      transport (λ i → A i0 → B i) f (transport (λ i → A i0) x) ≡ transport (λ i → B i) (f x))
-   (
-       transport (λ i → A i0 → B i0) f (transport (λ i → A i0) x)
-     ≡⟨ cong (transport (λ i → A i0 → B i0) f) (transportRefl x) ⟩
-       transport (λ i → A i0 → B i0) f x
-     ≡⟨ cong (λ g → g x) (transportRefl f) ⟩
-       f x
-     ≡⟨ sym (transportRefl (f x)) ⟩
-       transport (λ i → B i0) (f x) ∎
-   )
-    λ i → B i
-  )
-  λ i → A i
-  -- J (λ A1 A → transport (λ i → A i → B i) f ≡ λ a1 → transport B (f (transport (sym A) a1)))
-  -- (funExt (λ a1 → refl)) A
-
-transport→' : {A0 A1 B0 B1 : Type} {A : A0 ≡ A1} {B : B0 ≡ B1} (f : A0 → B0) →
-  transport (λ i → A i → B i) f ≡ λ a1 → transport B (f (transport (sym A) a1))
-transport→' {A = A} {B = B} f =
-  J (λ A1 A → transport (λ i → A i → B i) f ≡ λ a1 → transport B (f (transport (sym A) a1)))
-  refl A
-
-pathToFun→ : {A0 A1 B0 B1 : Type} {A : A0 ≡ A1} {B : B0 ≡ B1} (f : A0 → B0) →
-  pathToFun (λ i → A i → B i) f ≡ λ a1 → pathToFun B (f (pathToFun (sym A) a1))
-pathToFun→ {A = A} {B = B} f =
-  J (λ A1 A → pathToFun (λ i → A i → B i) f ≡ λ a1 → pathToFun B (f (pathToFun (sym A) a1)))
-  refl A
-
-pathToFun→' : {A0 A1 B0 B1 : Type} {A : A0 ≡ A1} {B : B0 ≡ B1} (f : A0 → B0) →
-  pathToFun (λ i → A i → B i) f ≡ λ a1 → pathToFun B (f (pathToFun (sym A) a1))
-pathToFun→' {A0} {A1} {B0} {B1} {A} {B} f =
-  J (λ A1 A → pathToFun (λ i → A i → B i) f ≡ λ a1 → pathToFun B (f (pathToFun (sym A) a1)))
-  (
-    J (λ B1 B → pathToFun (λ i → A0 → B i) f ≡ λ a → pathToFun B (f (pathToFun refl a)))
-    (
-      funExt λ a →
-        pathToFun refl f a
-      ≡⟨ cong (λ g → g a) (pathToFunRefl f) ⟩
-        f a
-      ≡⟨ sym (pathToFunRefl (f a)) ⟩
-        pathToFun refl (f a)
-      ≡⟨ cong (λ x → pathToFun refl (f x)) (sym (pathToFunRefl a)) ⟩
-        pathToFun refl (f (pathToFun refl a)) ∎
-    )
-    B
-  )
-  A -}
-
 open ℤ
 
 loopSucℤtimes : (n : ℤ) → loop n times ∙ loop ≡ loop sucℤ n times
