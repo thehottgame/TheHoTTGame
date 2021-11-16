@@ -30,11 +30,6 @@ pathToFunPathFibration {A} {x} {y} q = J (λ z p → pathToFun (λ i → x ≡ p
     q ∙ refl ∎
   )
 
-pathToFun→ : {A0 A1 B0 B1 : Type} (A : A0 ≡ A1) (B : B0 ≡ B1) (f : A0 → B0) →
-  pathToFun (λ i → A i → B i) f ≡ λ a1 → pathToFun B (f (pathToFun (sym A) a1))
-pathToFun→ A B f = refl
-
-
 rewind : (x : S¹) → helix x → base ≡ x
 rewind = outOfS¹D (λ x → helix x → base ≡ x) loop_times
   (

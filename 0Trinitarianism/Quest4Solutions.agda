@@ -7,30 +7,30 @@ private
     u : Level
 
 
-data Id {A : Type} : (x y : A) → Type where
+data Id {A : Type u} : (x y : A) → Type u where
 
   rfl : {x : A} → Id x x
 
-idSym : (A : Type) (x y : A) → Id x y → Id y x
+idSym : (A : Type u) (x y : A) → Id x y → Id y x
 idSym A x .x rfl = rfl
 
-Sym : {A : Type} {x y : A} → Id x y → Id y x
+Sym : {A : Type u} {x y : A} → Id x y → Id y x
 Sym rfl = rfl
 
-_*_ : {A : Type} {x y z : A} → Id x y → Id y z → Id x z
+_*_ : {A : Type u} {x y z : A} → Id x y → Id y z → Id x z
 rfl * q = q
 
-_*0_ : {A : Type} {x y z : A} → Id x y → Id y z → Id x z
+_*0_ : {A : Type u} {x y z : A} → Id x y → Id y z → Id x z
 p *0 rfl = p
 
-_*1_ : {A : Type} {x y z : A} → Id x y → Id y z → Id x z
+_*1_ : {A : Type u} {x y z : A} → Id x y → Id y z → Id x z
 rfl *1 rfl = rfl
 
 ------------Cong-------------------------
 
 private
   variable
-    A B : Type
+    A B : Type u
     w x y z : A
 
 ------------Groupoid Laws----------------
@@ -54,14 +54,14 @@ Assoc rfl q r = rfl
 
 -------------Mapping Out----------------
 
-outOfId : (M : (y : A) → Id x y → Type) → M x rfl
+outOfId : (M : (y : A) → Id x y → Type u) → M x rfl
   → {y : A} (p : Id x y) → M y p
 outOfId M h rfl = h
 
 ------------Path vs Id--------------------
 
 Path→Id : x ≡ y → Id x y
-Path→Id {A} {x} = J (λ y p → Id x y) rfl
+Path→Id {u} {A} {x} = J (λ y p → Id x y) rfl
 
 Id→Path : Id x y → x ≡ y
 Id→Path rfl = refl
@@ -83,21 +83,21 @@ Path→IdRefl : Path→Id (refl {x = x}) ≡ rfl
 Path→IdRefl {x = x} = JRefl (λ y p → Id x y) rfl
 
 Path≡Id : (x ≡ y) ≡ (Id x y)
-Path≡Id {A} {x} {y} = isoToPath (iso Path→Id Id→Path rightInv leftInv) where
+Path≡Id {u} {A} {x} {y} = isoToPath (iso Path→Id Id→Path rightInv leftInv) where
 
-  rightInv : section (Path→Id {A} {x} {y}) Id→Path
+  rightInv : section (Path→Id {u} {A} {x} {y}) Id→Path
   rightInv rfl = Path→IdRefl
 
-  leftInv : retract (Path→Id {A} {x} {y}) Id→Path
+  leftInv : retract (Path→Id {u} {A} {x} {y}) Id→Path
   leftInv = J (λ y p → Id→Path (Path→Id p) ≡ p) (cong (λ p → Id→Path p) Path→IdRefl)
 
 -----------Basics about Path Space-----------------
 
 sym : {x y : A} → x ≡ y → y ≡ x
-sym {A} {x} = J (λ y1 p → y1 ≡ x) refl
+sym {u} {A} {x} = J (λ y1 p → y1 ≡ x) refl
 
-symRefl : {x : A} → sym {A} {x} {x} (refl) ≡ refl
-symRefl {A} {x} = JRefl (λ y1 p → y1 ≡ x) refl
+symRefl : {x : A} → sym {u} {A} {x} {x} (refl) ≡ refl
+symRefl {u} {A} {x} = JRefl (λ y1 p → y1 ≡ x) refl
 
 Trans : {x y z : A} → x ≡ y → y ≡ z → x ≡ z
 Trans {x = x} {z = z} = J (λ y1 p → y1 ≡ z → x ≡ z) λ q → q
@@ -114,20 +114,20 @@ infixr 30 _∙_
 infix  3 _∎
 infixr 2 _≡⟨_⟩_
 
-TransRefl : {x y : A} → Trans {A} {x} {x} {y} refl ≡ λ q → q
+TransRefl : {x y : A} → Trans {u} {A} {x} {x} {y} refl ≡ λ q → q
 TransRefl {x = x} {y = y} = JRefl ((λ y1 p → y1 ≡ y → x ≡ y)) λ q → q
 
 refl∙refl : {x : A} → refl {_} {A} {x} ∙ refl ≡ refl
 refl∙refl = cong (λ f → f refl) TransRefl
 
 ∙refl : {x y : A} (p : x ≡ y) → Trans p refl ≡ p
-∙refl {A} {x} {y} = J (λ y p → Trans p refl ≡ p) refl∙refl
+∙refl {u} {A} {x} {y} = J (λ y p → Trans p refl ≡ p) refl∙refl
 
-refl∙ : {A : Type} {x y : A} (p : x ≡ y) → refl ∙ p ≡ p
+refl∙ : {A : Type u} {x y : A} (p : x ≡ y) → refl ∙ p ≡ p
 refl∙ = J (λ y p → refl ∙ p ≡ p) refl∙refl
 
 
-∙sym : {A : Type} {x y : A} (p : x ≡ y) → p ∙ sym p ≡ refl
+∙sym : {A : Type u} {x y : A} (p : x ≡ y) → p ∙ sym p ≡ refl
 ∙sym = J (λ y p → p ∙ sym p ≡ refl)
        (
          refl ∙ sym refl
@@ -138,7 +138,7 @@ refl∙ = J (λ y p → refl ∙ p ≡ p) refl∙refl
        )
 
 
-sym∙ : {A : Type} {x y : A} (p : x ≡ y) → (sym p) ∙ p ≡ refl
+sym∙ : {A : Type u} {x y : A} (p : x ≡ y) → (sym p) ∙ p ≡ refl
 sym∙ = J (λ y p → (sym p) ∙ p ≡ refl)
        (
          (sym refl) ∙ refl
@@ -148,9 +148,9 @@ sym∙ = J (λ y p → (sym p) ∙ p ≡ refl)
          refl ∎
        )
 
-assoc : {A : Type} {w x : A} (p : w ≡ x) {y z : A} (q : x ≡ y) (r : y ≡ z)
+assoc : {A : Type u} {w x : A} (p : w ≡ x) {y z : A} (q : x ≡ y) (r : y ≡ z)
         → (p ∙ q) ∙ r ≡ p ∙ (q ∙ r)
-assoc {A} = J
+assoc {u} {A} = J
         -- casing on p
         (λ x p → {y z : A} (q : x ≡ y) (r : y ≡ z) → (p ∙ q) ∙ r ≡ p ∙ (q ∙ r))
         -- reduce to showing when p = refl
@@ -166,50 +166,50 @@ id : A → A
 id x = x
 
 pathToFun : A ≡ B → A → B
-pathToFun {A} = J (λ B p → (A → B)) id
+pathToFun {u} {A} = J (λ B p → (A → B)) id
 
 pathToFunRefl : pathToFun (refl {x = A}) ≡ id
-pathToFunRefl {A} = JRefl (λ B p → (A → B)) id
+pathToFunRefl {u} {A} = JRefl (λ B p → (A → B)) id
 
-pathToFunReflx : pathToFun (refl {x = A}) x ≡ x
-pathToFunReflx {x = x} = cong (λ f → f x) pathToFunRefl
+pathToFunReflx : (x : A) → pathToFun (refl {x = A}) x ≡ x
+pathToFunReflx x = cong (λ f → f x) pathToFunRefl
 
-endPt : (B : A → Type) (p : x ≡ y) → B x → B y
+endPt : (B : A → Type u) (p : x ≡ y) → B x → B y
 endPt {x = x} B = J (λ y p → B x → B y) id
 
-endPtRefl : (B : A → Type) → endPt B (refl {x = x}) ≡ id
+endPtRefl : (B : A → Type u) → endPt B (refl {x = x}) ≡ id
 endPtRefl {x = x} B = JRefl ((λ y p → B x → B y)) id
 
-endPt' : (B : A → Type) (p : x ≡ y) → B x → B y
+endPt' : (B : A → Type u) (p : x ≡ y) → B x → B y
 endPt' B p = pathToFun (cong B p )
 
 --------------funExt---------------------
 
-funExt : (B : A → Type) (f g : (a : A) → B a) →
+funExt : {B : A → Type u} {f g : (a : A) → B a} →
   ((a : A) → f a ≡ g a) → f ≡ g
-funExt B f g h = λ i a → h a i
+funExt h = λ i a → h a i
 
-funExtPath : (B : A → Type) (f g : (a : A) → B a) → (f ≡ g) ≡ ((a : A) → f a ≡ g a)
-funExtPath {A} B f g = isoToPath (iso fun (funExt B f g) rightInv leftInv) where
+funExtPath : (B : A → Type u) (f g : (a : A) → B a) → (f ≡ g) ≡ ((a : A) → f a ≡ g a)
+funExtPath {u} {A} B f g = isoToPath (iso fun funExt rightInv leftInv) where
 
   fun : f ≡ g → (a : A) → f a ≡ g a
   fun h = λ a i → h i a
 
-  rightInv : section fun (funExt B f g)
+  rightInv : section fun funExt
   rightInv h = refl
 
-  leftInv : retract fun (funExt B f g)
+  leftInv : retract fun funExt
   leftInv h = refl
 
 --------------Path on Products-----------
 
-data _×_ (A B : Type) : Type where
+data _×_ (A B : Type u) : Type u where
 
   _,_ : A → B → A × B
 
-Id× : {A B : Type} (a0 a1 : A) (b0 b1 : B)
-  → (Id {A × B} ( a0 , b0 ) ( a1 , b1 )) ≡ (Id a0 a1 × Id b0 b1)
-Id× {A} {B} a0 a1 b0 b1 = isoToPath (iso fun inv rightInv leftInv) where
+Id× : (a0 a1 : A) (b0 b1 : B)
+  → (Id {u} {A × B} ( a0 , b0 ) ( a1 , b1 )) ≡ (Id a0 a1 × Id b0 b1)
+Id× {u} {A} {B} a0 a1 b0 b1 = isoToPath (iso fun inv rightInv leftInv) where
 
   fun : Id {A = A × B} ( a0 , b0 ) ( a1 , b1 ) → Id a0 a1 × Id b0 b1
   fun rfl = rfl , rfl
@@ -229,8 +229,8 @@ fst (a , b) = a
 snd : A × B → B
 snd (a , b) = b
 
-Path× : {A B : Type} (x y : A × B) → (x ≡ y) ≡ ((fst x ≡ fst y) × (snd x ≡ snd y))
-Path× {A} {B} (a0 , b0) (a1 , b1) =
+Path× : {A B : Type u} (x y : A × B) → (x ≡ y) ≡ ((fst x ≡ fst y) × (snd x ≡ snd y))
+Path× {u} {A} {B} (a0 , b0) (a1 , b1) =
   isoToPath (iso fun (inv a0 a1 b0 b1) rightInv leftInv) where
 
   fun : {x y : A × B} → x ≡ y → (fst x ≡ fst y) × (snd x ≡ snd y)
