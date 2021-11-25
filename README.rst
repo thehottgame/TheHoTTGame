@@ -13,4 +13,4 @@ This page will help you get the Game working for you.
 
 For instructions on how to get started with the HoTT Game,
 visit
-`this page <https://findtherightpath.readthedocs.io/en/latest/>`_.
+`this page <https://thehottgameguide.readthedocs.io/en/latest/index.html>`_.
