@@ -14,3 +14,8 @@ This page will help you get the Game working for you.
 For instructions on how to get started with the HoTT Game,
 visit
 `this page <https://thehottgameguide.readthedocs.io/en/latest/index.html>`_.
+
+The creators of this game are 
+`Joseph Hua <https://jlh18.github.io/>`_, 
+`Ken Lee <http://kl-i.github.io/>`_,
+and Bendit Chan.
