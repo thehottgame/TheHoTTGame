@@ -18,4 +18,4 @@ visit
 The creators of this game are 
 `Joseph Hua <https://jlh18.github.io/>`_, 
 `Ken Lee <http://kl-i.github.io/>`_,
-and Bendit Chan.
+and `Bendit Chan <https://benditchan.wordpress.com/>`_.
