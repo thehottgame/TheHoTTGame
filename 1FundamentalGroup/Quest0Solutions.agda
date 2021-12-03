@@ -43,7 +43,7 @@ pathEmpty : (A : Type) → Type₁
 pathEmpty A = A ≡ ⊥
 
 isoEmpty : (A : Type) → Type
-isoEmpty A = A ≅ ⊥
+isoEmpty A = {!!}
 
 outOf⊥ : (A : Type) → ⊥ → A
 outOf⊥ A ()
