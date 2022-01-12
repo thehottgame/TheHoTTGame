@@ -1,4 +1,4 @@
 name: TheHoTTGame
 include: .
-depend: cubical-0.3
+depend: cubical
 flags: --cubical --no-import-sorts
