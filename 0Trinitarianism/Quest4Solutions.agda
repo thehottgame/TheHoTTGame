@@ -44,7 +44,7 @@ rfl* p = rfl
 *Sym : (p : Id x y) → Id (p * Sym p) rfl
 *Sym rfl = rfl
 
-Sym* : (p : Id x y) → Id rfl (p * Sym p)
+Sym* : {A : Type} {x y : A} (p : Id x y) → Id (Sym p * p) rfl
 Sym* rfl = rfl
 
 Assoc : (p : Id w x) (q : Id x y) (r : Id y z)
