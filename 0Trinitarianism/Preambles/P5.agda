@@ -3,12 +3,11 @@ module 0Trinitarianism.Preambles.P5 where
 open import Cubical.Foundations.Prelude renaming
   (funExt to libFunExt ;
    sym to libSym ;
-   _≡⟨_⟩_ to lib_≡⟨_⟩_ ;
    _∎ to lib_∎ ;
    _∙_ to lib_∙_ ;
    fst to libFst ;
    snd to libSnd
-  ) public
+  ) hiding ( step-≡ ) public
 open import Cubical.HITs.S1 using ( S¹ ; base ; loop ) public
 open import Cubical.Foundations.Isomorphism renaming (Iso to _≅_) public
 open import Cubical.Foundations.Path public
@@ -32,6 +31,3 @@ PathPIsoPathD {u} {A} {B} p x =
   subst (λ b → (y : B) → (PathP (λ i → p i) x y) ≅ (b ≡ y))
     (sym (pathToFun≡transport p x))
     (PathPIsoPath _ x)
-
-
-

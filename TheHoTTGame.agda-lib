@@ -1,4 +1,7 @@
 name: TheHoTTGame
 include: .
 depend: cubical
-flags: --cubical --no-import-sorts
+flags:
+  --cubical
+  --no-import-sorts
+  -W noUnsupportedIndexedMatch
