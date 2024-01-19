@@ -2,7 +2,7 @@ module 1FundamentalGroup.Preambles.P0 where
 
 open import Cubical.Data.Empty using (⊥) public
 open import Cubical.Data.Unit renaming ( Unit to ⊤ ) public
-open import Cubical.Data.Bool public
+open import Cubical.Data.Bool hiding (elim) public
 open import Cubical.Foundations.Prelude
      renaming ( subst to endPt
               ; transport to pathToFun
