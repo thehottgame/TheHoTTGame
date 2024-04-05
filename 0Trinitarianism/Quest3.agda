@@ -6,6 +6,6 @@ _+_ : ℕ → ℕ → ℕ
 n + m = {!!}
 
 {-
-Write here you proof that the sum of
+Write here your proof that the sum of
 even naturals is even.
 -}
